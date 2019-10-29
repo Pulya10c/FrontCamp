@@ -4,7 +4,7 @@ class View {
 
     this.header = this.createElement('header', 'header');
 
-    this.title = this.createElement('h1');
+    this.title = this.createElement('h1', 'main-title');
     this.title.textContent = 'FrontCamp NewsApi';
     this.header.append(this.title);
 
@@ -16,7 +16,7 @@ class View {
 
     this.inputQueryText = this.createElement('input', 'input-query-text');
     this.inputQueryText.type = 'text';
-    this.inputQueryText.placeholder = 'Search';
+    this.inputQueryText.placeholder = 'Search articles';
 
     this.inputQueryLanguageCheckbox = this.createElement('input', 'input-query-language-checkbox');
     this.inputQueryLanguageCheckbox.type = 'checkbox';
@@ -25,7 +25,7 @@ class View {
     this.labelInputQueryLanguageCheckbox.textContent = 'Search only in English';
     this.labelInputQueryLanguageCheckbox.append(this.inputQueryLanguageCheckbox);
 
-    this.searchButton = this.createElement('button');
+    this.searchButton = this.createElement('button', 'search-button');
     this.searchButton.textContent = 'Search';
     this.searchButton.disabled = true;
 

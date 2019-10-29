@@ -6,6 +6,7 @@
 
 body, html {
   min-height: 100%;
+  background-color: #EFF1F2;
 }
 
 a {
@@ -15,3 +16,144 @@ a {
 ul {
   list-style: none;
 }
+
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 24px;
+  outline: none;
+  background-color: #0059D9;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:disabled {
+    background-color: rgb(117, 117, 117);
+  }
+
+  &:hover:not(:disabled) {
+    background-color: black;
+  }
+
+  &:active {
+    background-color: #0059D9;
+    opacity: 0.7;
+  }
+}
+
+
+
+.root {
+  height: 100vh;
+  max-width: 1240px;
+  margin: 0 auto;
+
+  .header {
+    padding: 10px 0;
+    text-align: center;
+
+    .main-title {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 30px;
+    }
+  }
+
+  & form {
+      display: grid;
+      grid-template-areas:
+      "sources queryText queryText searchButton"
+      "lang    lang      lang      searchButton";
+      grid-gap: 3px;
+
+      .query-source-select {
+        grid-area: sources;
+      }
+      .input-query-text {
+        grid-area: queryText;
+      }
+      .label-input-query-language-checkbox {
+        grid-area: lang;
+      }
+      .search-button {
+        grid-area: searchButton;
+      }
+
+      .query-source-select,
+      .input-query-text,
+      .label-input-query-language-checkbox {
+        padding: 5px 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        background: white;
+        border: 1px solid rgba(31, 64, 111, 0.20);
+        border-radius: 4px;
+      }
+
+      .query-source-select:focus,
+      .input-query-text:focus {
+        border-color: #0059D9;
+      }
+    }
+}
+/*
+@media screen and (max-width: 600px) {
+    .root {
+      max-width: 560px;
+
+      .header {
+        padding: 5px 0;
+
+        .main-title {
+          font-size: 26px;
+        }
+
+        & form {
+          grid-template-areas:
+        "sources   searchButton"
+        "queryText searchButton"
+        "lan       searchButton";
+
+        .query-source-select,
+        .input-query-text,
+        .label-input-query-language-checkbox {
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+    .root {
+      max-width: 280px;
+
+      .header {
+        padding: 2px 0;
+
+        .main-title {
+          font-size: 20px;
+        }
+
+        & form {
+          grid-template-areas:
+        "sources   searchButton"
+        "queryText searchButton"
+        "lan       searchButton";
+
+        .query-source-select,
+        .input-query-text,
+        .label-input-query-language-checkbox {
+          padding: 3px 7px;
+        }
+      }
+    }
+  }
+}
+*/
