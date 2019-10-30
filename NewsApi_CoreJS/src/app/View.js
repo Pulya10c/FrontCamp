@@ -90,7 +90,7 @@ class View {
     }
 
     if (articles.length === 0) {
-      const li = this.createElement('li', 'article');
+      const li = this.createElement('li', 'nothing-to-display');
       li.textContent = 'Nothing to display according to your query';
       this.articlesList.append(li);
 
@@ -100,7 +100,7 @@ class View {
     } else {
       this._renderArticlesList(articles);
       if (totalResults > articlesPerPage * page) {
-        this.main.append(this.getMoreArticlesButton);
+        this.app.append(this.getMoreArticlesButton);
       }
     }
   };

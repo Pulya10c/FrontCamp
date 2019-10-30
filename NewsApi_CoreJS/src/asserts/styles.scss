@@ -1,20 +1,47 @@
+$screen-sm-max: 576px;
+$screen-md-max: 768px;
+$main-color: #004db9;
+$main-color-alfa: #004db9a1;
+$main-color-hovered: #00183a;
+$main-color-active: #004db9;
+$main-color-disabled: #7792b8;
+
+@mixin sm {
+  @media (max-width: $screen-sm-max) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $screen-md-max) {
+    @content;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body, html {
-  min-height: 100%;
-  background-color: #EFF1F2;
+body,
+html {
+  min-height: 100vh;
+  background-color: #eff1f2;
 }
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 ul {
   list-style: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
 }
 
 button {
@@ -23,34 +50,43 @@ button {
   font-size: 18px;
   line-height: 24px;
   outline: none;
-  background-color: #0059D9;
+  background-color: $main-color;
   border: 0;
   border-radius: 4px;
   color: white;
   padding: 15px;
   cursor: pointer;
-  transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:disabled {
-    background-color: rgb(117, 117, 117);
+    cursor: not-allowed;
+    background-color: $main-color-disabled;
   }
 
   &:hover:not(:disabled) {
-    background-color: black;
+    background-color: $main-color-hovered;
   }
 
   &:active {
-    background-color: #0059D9;
+    background-color: $main-color-active;
     opacity: 0.7;
   }
 }
 
-
-
 .root {
   height: 100vh;
-  max-width: 1240px;
-  margin: 0 auto;
+
+  .main {
+    margin: 0 auto;
+    max-width: 1240px;
+    @include md {
+      max-width: 720px;
+    }
+    @include sm {
+      max-width: 550px;
+    }
+    padding: 5px;
+  }
 
   .header {
     padding: 10px 0;
@@ -59,101 +95,131 @@ button {
     .main-title {
       font-family: 'Open Sans', sans-serif;
       font-size: 30px;
+
+      @include md {
+        font-size: 26px;
+      }
+
+      @include sm {
+        font-size: 20px;
+      }
     }
   }
 
-  & form {
-      display: grid;
+  form {
+    margin: 5px;
+    display: grid;
+    grid-gap: 3px;
+    grid-template-areas:
+      'sources queryText queryText searchButton'
+      'lang    lang      lang      searchButton';
+
+    @include md {
       grid-template-areas:
-      "sources queryText queryText searchButton"
-      "lang    lang      lang      searchButton";
-      grid-gap: 3px;
-
-      .query-source-select {
-        grid-area: sources;
-      }
-      .input-query-text {
-        grid-area: queryText;
-      }
-      .label-input-query-language-checkbox {
-        grid-area: lang;
-      }
-      .search-button {
-        grid-area: searchButton;
-      }
-
-      .query-source-select,
-      .input-query-text,
-      .label-input-query-language-checkbox {
-        padding: 5px 10px;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20px;
-        background: white;
-        border: 1px solid rgba(31, 64, 111, 0.20);
-        border-radius: 4px;
-      }
-
-      .query-source-select:focus,
-      .input-query-text:focus {
-        border-color: #0059D9;
-      }
+        'sources   searchButton'
+        'queryText searchButton'
+        'lang      searchButton';
     }
-}
-/*
-@media screen and (max-width: 600px) {
-    .root {
-      max-width: 560px;
 
-      .header {
-        padding: 5px 0;
+    @include sm {
+      grid-template-areas:
+        'sources   searchButton'
+        'queryText searchButton'
+        'lang      searchButton';
+    }
 
-        .main-title {
-          font-size: 26px;
-        }
+    .query-source-select {
+      grid-area: sources;
+    }
+    .input-query-text {
+      grid-area: queryText;
+    }
+    .label-input-query-language-checkbox {
+      grid-area: lang;
+    }
+    .search-button {
+      grid-area: searchButton;
+    }
 
-        & form {
-          grid-template-areas:
-        "sources   searchButton"
-        "queryText searchButton"
-        "lan       searchButton";
+    .input-query-language-checkbox {
+      margin-left: 10px;
+      transform: scale(1.2);
+    }
 
-        .query-source-select,
-        .input-query-text,
-        .label-input-query-language-checkbox {
-          padding: 5px 10px;
-        }
+    .query-source-select,
+    .input-query-text,
+    .label-input-query-language-checkbox {
+      padding: 5px 10px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      background: white;
+      border: 1px solid rgba(31, 64, 111, 0.2);
+      border-radius: 4px;
+    }
+
+    .query-source-select:focus,
+    .input-query-text:focus {
+      border-color: $main-color;
+    }
+
+    .label-input-query-language-checkbox {
+      font-size: 16px;
+      line-height: 20px;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .articles-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+    font-size: 20px;
+    padding: 5px;
+
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+      font-size: 24px;
+    }
+
+    @include sm {
+      grid-template-columns: repeat(1, 1fr);
+      font-size: 20px;
+    }
+
+    .article {
+      display: grid;
+      grid-gap: 12px;
+      align-content: start;
+      padding: 4px;
+      border-radius: 10px;
+      background-color: #fff;
+      border: 1px solid rgba(218, 220, 224, 0.5);
+      box-shadow: 0 20px 20px -20px $main-color;
+      transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      & .article-title,
+      & .article-image {
+        cursor: pointer;
+      }
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 2px 2px $main-color-hovered;
+      }
+
+      .article-link {
+        display: grid;
+      }
+
+      .nothing-to-display {
+        grid-column: auto / span 4;
       }
     }
   }
-}
 
-
-@media screen and (max-width: 320px) {
-    .root {
-      max-width: 280px;
-
-      .header {
-        padding: 2px 0;
-
-        .main-title {
-          font-size: 20px;
-        }
-
-        & form {
-          grid-template-areas:
-        "sources   searchButton"
-        "queryText searchButton"
-        "lan       searchButton";
-
-        .query-source-select,
-        .input-query-text,
-        .label-input-query-language-checkbox {
-          padding: 3px 7px;
-        }
-      }
-    }
+  .get-more-button {
+    width: 100%;
+    border-radius: 0;
   }
 }
-*/

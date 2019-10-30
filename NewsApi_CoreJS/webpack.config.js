@@ -35,10 +35,10 @@ module.exports = {
               sourceMap: true,
             },
           },
-          {
-            loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: './postcss.config.js' } },
-          },
+          // {
+          //   loader: 'postcss-loader',
+          //   options: { sourceMap: true, config: { path: './postcss.config.js' } },
+          // },
         ],
       },
       {
