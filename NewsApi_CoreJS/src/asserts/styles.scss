@@ -89,7 +89,7 @@ button {
   }
 
   .header {
-    padding: 10px 0;
+    padding: 10px 0 0;
     text-align: center;
 
     .main-title {
@@ -103,6 +103,10 @@ button {
       @include sm {
         font-size: 20px;
       }
+    }
+    .attribution-link {
+      font-size: 9px;
+      color: $main-color-disabled;
     }
   }
 

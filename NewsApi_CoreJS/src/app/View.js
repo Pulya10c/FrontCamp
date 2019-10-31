@@ -6,7 +6,13 @@ class View {
 
     this.title = this.createElement('h1', 'main-title');
     this.title.textContent = 'FrontCamp NewsApi';
-    this.header.append(this.title);
+
+    this.attributionLink = this.createElement('a', 'attribution-link');
+    this.attributionLink.textContent = '© NewsApi';
+    this.attributionLink.href = 'https://newsapi.org/';
+    this.attributionLink.target = '_blank';
+
+    this.header.append(this.title, this.attributionLink);
 
     this.main = this.createElement('main', 'main');
     this.form = this.createElement('form', 'query-form');
