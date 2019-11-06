@@ -3,10 +3,10 @@ class Controller {
     this.model = model;
     this.view = view;
 
-    this.model.bindDataSourcesReceived(this.onDataSourcesReceived);
-    this.model.bindDataArticlesReceived(this.onDataArticlesReceived);
-    this.model.bindDataArticlesUpdated(this.onDataArticlesUpdated);
+    this.model.bindDataSourcesReceived(this.handleErrorReceived, this.handleOnDataSourcesReceived);
+    this.model.bindDataArticlesReceived(this.handleErrorReceived, this.handleOnDataArticlesReceived);
 
+    // this.view.bindGetMoreArticlesIntersectedObserver(this.handleGetMoreArticlesIntersectedObserver);
     this.view.bindGetMoreArticlesButtonClick(this.handleGetMoreArticlesClick);
     this.view.bindInputQueryTextChanged(this.handleQueryTextChanged);
     this.view.bindCheckboxChanged(this.handleLanguageChanged);
@@ -17,29 +17,23 @@ class Controller {
     this.model.getArticlesSources();
   }
 
-  onDataSourcesReceived = () => {
+  handleErrorReceived = () => {
+    const { message } = this.model.error;
+
+    this.view.renderErrorPopup(message);
+  };
+
+  handleOnDataSourcesReceived = () => {
     const { sources } = this.model.data;
 
     this.view.renderSources(sources);
   };
 
-  onDataArticlesReceived = () => {
+  handleOnDataArticlesReceived = () => {
     const { articles, totalResults } = this.model.data;
     const { page, articlesPerPage } = this.model.queryParams;
 
     this.view.render({
-      articles,
-      totalResults,
-      page,
-      articlesPerPage,
-    });
-  };
-
-  onDataArticlesUpdated = () => {
-    const { articles, totalResults } = this.model.data;
-    const { page, articlesPerPage } = this.model.queryParams;
-
-    this.view.updateArticlesRender({
       articles,
       totalResults,
       page,
@@ -66,6 +60,10 @@ class Controller {
   handleGetMoreArticlesClick = () => {
     this.model.getMoreArticles();
   };
+
+  // handleGetMoreArticlesIntersectedObserver = () => {
+  //   this.model.getMoreArticles();
+  // };
 
   handleSearchArticlesClick = () => {
     this.model.searchArticles();

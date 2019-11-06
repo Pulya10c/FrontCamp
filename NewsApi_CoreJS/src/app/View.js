@@ -1,5 +1,8 @@
-class View {
+import BaseView from './common/BaseView';
+
+class View extends BaseView {
   constructor() {
+    super();
     this.app = this.getElement('#root');
 
     this.header = this.createElement('header', 'header');
@@ -50,15 +53,12 @@ class View {
     this.searchButton.disabled = !selectedSource && !inputQueryText;
   };
 
-  createElement = (tag, className) => {
-    const element = document.createElement(tag);
-    if (className) element.classList.add(className);
-    return element;
-  };
-
-  getElement = selector => {
-    const element = document.querySelector(selector);
-    return element;
+  renderErrorPopup = async message => {
+    this.errorComponent = await import('./common/Error');
+    const Error = this.errorComponent.default;
+    this.error = new Error();
+    this.error.setMessage(message);
+    this.error.insertInto(this.app);
   };
 
   renderSources = sources => {
@@ -82,16 +82,22 @@ class View {
   updateArticlesRender = ({ articles, totalResults, page, articlesPerPage }) => {
     this._renderArticlesList(articles);
     if (totalResults < articlesPerPage * page) {
+      // this.observer.unobserve(this.getMoreArticlesButton);
       this.getMoreArticlesButton.remove();
     }
   };
 
   render = ({ articles, totalResults, page, articlesPerPage }) => {
+    if (this.error) {
+      this.error.destroy();
+    }
+
     while (this.articlesList.firstChild) {
       this.articlesList.removeChild(this.articlesList.firstChild);
     }
 
     if (this.app.contains(this.getMoreArticlesButton)) {
+      // this.observer.unobserve(this.getMoreArticlesButton);
       this.getMoreArticlesButton.remove();
     }
 
@@ -101,12 +107,22 @@ class View {
       this.articlesList.append(li);
 
       if (this.app.contains(this.getMoreArticlesButton)) {
+        // this.observer.unobserve(this.getMoreArticlesButton);
         this.getMoreArticlesButton.remove();
       }
     } else {
       this._renderArticlesList(articles);
       if (totalResults > articlesPerPage * page) {
         this.app.append(this.getMoreArticlesButton);
+        // this.observer = new IntersectionObserver(
+        //   ([entry]) => {
+        //     if (entry.isIntersecting === false) return;
+        //     debugger;
+        //     this.observerHandler();
+        //   },
+        //   { root: this.app, threshold: 0.9 }
+        // );
+        // this.observer.observe(this.getMoreArticlesButton);
       }
     }
   };
@@ -157,11 +173,15 @@ class View {
   };
 
   bindInputQueryTextChanged = handler => {
-    this.inputQueryText.addEventListener('change', event => {
+    this.inputQueryText.addEventListener('input', event => {
       const { target } = event;
       handler(target.value);
     });
   };
+
+  // bindGetMoreArticlesIntersectedObserver = handler => {
+  //   this.observerHandler = handler;
+  // };
 
   bindGetMoreArticlesButtonClick = handler => {
     this.getMoreArticlesButton.addEventListener('click', () => {

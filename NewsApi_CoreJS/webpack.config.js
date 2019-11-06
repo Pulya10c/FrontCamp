@@ -8,7 +8,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index-bundle.js',
+    chunkFilename: '[name].bundle.js',
+    filename: '[name].bundle.js',
   },
   devtool: 'source-map',
   module: {
@@ -35,10 +36,6 @@ module.exports = {
               sourceMap: true,
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: { sourceMap: true, config: { path: './postcss.config.js' } },
-          // },
         ],
       },
       {
