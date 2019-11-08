@@ -1,0 +1,4 @@
+.error{position:fixed;bottom:5%;right:5%;padding:10px 20px 10px 10px;max-width:320px;border-radius:10px;background-color:#fff;border:1px solid rgba(218,220,224,0.5);box-shadow:0 20px 20px -20px #ff5c5c;font-size:18px;font-family:'Open Sans', sans-serif}.error .close{position:absolute;top:1%;right:3%;transition:all 200ms;font-size:20px;font-weight:bold;text-decoration:none;color:#333}.error .close:hover{cursor:pointer;color:red}
+
+
+/*# sourceMappingURL=1.style.css.map*/
