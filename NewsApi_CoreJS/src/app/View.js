@@ -82,7 +82,7 @@ class View extends BaseView {
   updateArticlesRender = ({ articles, totalResults, page, articlesPerPage }) => {
     this._renderArticlesList(articles);
     if (totalResults < articlesPerPage * page) {
-      // this.observer.unobserve(this.getMoreArticlesButton);
+      this.observer.unobserve(this.getMoreArticlesButton);
       this.getMoreArticlesButton.remove();
     }
   };
@@ -97,7 +97,7 @@ class View extends BaseView {
     }
 
     if (this.app.contains(this.getMoreArticlesButton)) {
-      // this.observer.unobserve(this.getMoreArticlesButton);
+      this.observer.unobserve(this.getMoreArticlesButton);
       this.getMoreArticlesButton.remove();
     }
 
@@ -107,22 +107,14 @@ class View extends BaseView {
       this.articlesList.append(li);
 
       if (this.app.contains(this.getMoreArticlesButton)) {
-        // this.observer.unobserve(this.getMoreArticlesButton);
+        this.observer.unobserve(this.getMoreArticlesButton);
         this.getMoreArticlesButton.remove();
       }
     } else {
       this._renderArticlesList(articles);
       if (totalResults > articlesPerPage * page) {
         this.app.append(this.getMoreArticlesButton);
-        // this.observer = new IntersectionObserver(
-        //   ([entry]) => {
-        //     if (entry.isIntersecting === false) return;
-        //     debugger;
-        //     this.observerHandler();
-        //   },
-        //   { root: this.app, threshold: 0.9 }
-        // );
-        // this.observer.observe(this.getMoreArticlesButton);
+        this.observer.observe(this.getMoreArticlesButton);
       }
     }
   };
@@ -179,9 +171,11 @@ class View extends BaseView {
     });
   };
 
-  // bindGetMoreArticlesIntersectedObserver = handler => {
-  //   this.observerHandler = handler;
-  // };
+  bindGetMoreArticlesIntersectedObserver = handler => {
+    this.observer = this.createObserver(() => {
+      handler();
+    });
+  };
 
   bindGetMoreArticlesButtonClick = handler => {
     this.getMoreArticlesButton.addEventListener('click', () => {

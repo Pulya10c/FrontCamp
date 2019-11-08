@@ -6,7 +6,7 @@ class Controller {
     this.model.bindDataSourcesReceived(this.handleErrorReceived, this.handleOnDataSourcesReceived);
     this.model.bindDataArticlesReceived(this.handleErrorReceived, this.handleOnDataArticlesReceived);
 
-    // this.view.bindGetMoreArticlesIntersectedObserver(this.handleGetMoreArticlesIntersectedObserver);
+    this.view.bindGetMoreArticlesIntersectedObserver(this.handleGetMoreArticlesIntersectedObserver);
     this.view.bindGetMoreArticlesButtonClick(this.handleGetMoreArticlesClick);
     this.view.bindInputQueryTextChanged(this.handleQueryTextChanged);
     this.view.bindCheckboxChanged(this.handleLanguageChanged);
@@ -61,9 +61,9 @@ class Controller {
     this.model.getMoreArticles();
   };
 
-  // handleGetMoreArticlesIntersectedObserver = () => {
-  //   this.model.getMoreArticles();
-  // };
+  handleGetMoreArticlesIntersectedObserver = () => {
+    this.model.getMoreArticles();
+  };
 
   handleSearchArticlesClick = () => {
     this.model.searchArticles();

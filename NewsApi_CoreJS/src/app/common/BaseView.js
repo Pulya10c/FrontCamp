@@ -9,6 +9,16 @@ class BaseView {
     const element = document.querySelector(selector);
     return element;
   };
+
+  createObserver = handler => {
+    const options = { threshold: 0.7 };
+
+    return new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        handler();
+      }
+    }, options);
+  };
 }
 
 export default BaseView;
