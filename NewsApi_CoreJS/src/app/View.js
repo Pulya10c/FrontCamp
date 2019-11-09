@@ -21,6 +21,7 @@ class View extends BaseView {
     this.form = this.createElement('form', 'query-form');
 
     this.selectQuerySource = this.createElement('select', 'query-source-select');
+    this.selectQuerySource.disabled = true;
     this.selectQuerySource.value = '';
 
     this.inputQueryText = this.createElement('input', 'input-query-text');
@@ -45,8 +46,7 @@ class View extends BaseView {
     this.main.append(this.form, this.articlesList);
     this.app.append(this.header, this.main);
 
-    this.getMoreArticlesButton = this.createElement('button', 'get-more-button');
-    this.getMoreArticlesButton.textContent = 'Get More Articles';
+    this.getMoreArticlesButton = this._createGetMore();
   }
 
   updateDisabledSearchButton = ({ selectedSource, inputQueryText }) => {
@@ -77,6 +77,7 @@ class View extends BaseView {
       fragment.appendChild(option);
     });
     this.selectQuerySource.append(fragment);
+    this.selectQuerySource.disabled = false;
   };
 
   updateArticlesRender = ({ articles, totalResults, page, articlesPerPage }) => {
@@ -92,31 +93,38 @@ class View extends BaseView {
       this.error.destroy();
     }
 
-    while (this.articlesList.firstChild) {
-      this.articlesList.removeChild(this.articlesList.firstChild);
+    if (this.getMoreArticlesButton) {
+      this._destroyGetMore();
     }
 
-    if (this.app.contains(this.getMoreArticlesButton)) {
-      this.observer.unobserve(this.getMoreArticlesButton);
-      this.getMoreArticlesButton.remove();
+    while (this.articlesList.firstChild) {
+      this.articlesList.removeChild(this.articlesList.firstChild);
     }
 
     if (articles.length === 0) {
       const li = this.createElement('li', 'nothing-to-display');
       li.textContent = 'Nothing to display according to your query';
       this.articlesList.append(li);
-
-      if (this.app.contains(this.getMoreArticlesButton)) {
-        this.observer.unobserve(this.getMoreArticlesButton);
-        this.getMoreArticlesButton.remove();
-      }
     } else {
       this._renderArticlesList(articles);
       if (totalResults > articlesPerPage * page) {
+        this.getMoreArticlesButton = this._createGetMore();
         this.app.append(this.getMoreArticlesButton);
         this.observer.observe(this.getMoreArticlesButton);
       }
     }
+  };
+
+  _createGetMore = () => {
+    const element = this.createElement('button', 'get-more-button');
+    element.textContent = 'Get More Articles';
+    return element;
+  };
+
+  _destroyGetMore = () => {
+    this.observer.unobserve(this.getMoreArticlesButton);
+    this.getMoreArticlesButton.remove();
+    this.getMoreArticlesButton = null;
   };
 
   _renderArticlesList = articles => {
@@ -133,9 +141,7 @@ class View extends BaseView {
       linkTitle.textContent = `${title}`;
 
       const articleImage = this.createElement('img', 'article-image');
-      if (urlToImage) {
-        articleImage.src = `${urlToImage}`;
-      }
+      articleImage.src = urlToImage ? `${urlToImage}` : './images/no-image-found.png';
       articleImage.alt = `${title}`;
       articleLink.append(linkTitle, articleImage);
 
@@ -151,23 +157,20 @@ class View extends BaseView {
   };
 
   bindSelectQuerySourceChanged = handler => {
-    this.selectQuerySource.addEventListener('change', event => {
-      const { target } = event;
-      handler(target.value);
+    this.selectQuerySource.addEventListener('change', ({ target: { value } }) => {
+      handler(value);
     });
   };
 
   bindCheckboxChanged = handler => {
-    this.inputQueryLanguageCheckbox.addEventListener('change', event => {
-      const { target } = event;
-      handler(target.checked);
+    this.inputQueryLanguageCheckbox.addEventListener('change', ({ target: { checked } }) => {
+      handler(checked);
     });
   };
 
   bindInputQueryTextChanged = handler => {
-    this.inputQueryText.addEventListener('input', event => {
-      const { target } = event;
-      handler(target.value);
+    this.inputQueryText.addEventListener('input', ({ target: { value } }) => {
+      handler(value);
     });
   };
 

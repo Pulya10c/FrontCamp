@@ -5,8 +5,8 @@ export const setLoggerForFunc = method => {
       console.log('The function was called with arguments:');
       funcArguments.forEach(arg => console.dir(arg));
       console.log('+++++++++++++++++');
-      return func(...funcArguments);
-    }
+      return func.apply(null, funcArguments);
+    },
   });
 };
 
@@ -20,6 +20,6 @@ export const setLoggerForSetProps = targetObj => {
       console.log('=======================');
       target[key] = val;
       return target;
-    }
+    },
   });
 };

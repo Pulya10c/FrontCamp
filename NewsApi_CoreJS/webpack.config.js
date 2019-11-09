@@ -3,6 +3,7 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -65,6 +66,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/asserts/images/*',
+        to: 'images/[name].[ext]',
+      },
+    ]),
     new WebpackNotifierPlugin(),
   ],
 };

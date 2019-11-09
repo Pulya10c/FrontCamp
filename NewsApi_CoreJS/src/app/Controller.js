@@ -18,20 +18,26 @@ class Controller {
   }
 
   handleErrorReceived = () => {
-    const { message } = this.model.error;
+    const {
+      error: { message },
+    } = this.model;
 
     this.view.renderErrorPopup(message);
   };
 
   handleOnDataSourcesReceived = () => {
-    const { sources } = this.model.data;
+    const {
+      data: { sources },
+    } = this.model;
 
     this.view.renderSources(sources);
   };
 
   handleOnDataArticlesReceived = () => {
-    const { articles, totalResults } = this.model.data;
-    const { page, articlesPerPage } = this.model.queryParams;
+    const {
+      data: { articles, totalResults },
+      queryParams: { page, articlesPerPage },
+    } = this.model;
 
     this.view.render({
       articles,
@@ -43,13 +49,21 @@ class Controller {
 
   handleSourceChanged = sourceId => {
     this.model.updateSelectedSource(sourceId);
-    const { selectedSource, inputQueryText } = this.model.queryParams;
+
+    const {
+      queryParams: { selectedSource, inputQueryText },
+    } = this.model;
+
     this.view.updateDisabledSearchButton({ inputQueryText, selectedSource });
   };
 
   handleQueryTextChanged = text => {
     this.model.updateQueryText(text);
-    const { selectedSource, inputQueryText } = this.model.queryParams;
+
+    const {
+      queryParams: { selectedSource, inputQueryText },
+    } = this.model;
+
     this.view.updateDisabledSearchButton({ inputQueryText, selectedSource });
   };
 

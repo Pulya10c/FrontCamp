@@ -11,7 +11,7 @@ class BaseView {
   };
 
   createObserver = handler => {
-    const options = { threshold: 0.7 };
+    const options = { threshold: 0.6 };
 
     return new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
