@@ -34,8 +34,8 @@
 
 3. Create an index to make this query covered and provide proof (from explain() or Compass UI) that it is
    indeed covered:
-   db.restaurants.find({ restaurant*id: "41098650" }, { \_id: 0, borough: 1 })
-   \_Answer:*
+   db.restaurants.find({ restaurant_id: "41098650" }, { \_id: 0, borough: 1 })
+   _Answer:_
    `db.restaurants.createIndex({ restaurant_id: 1 })`
 
 4. Create a partial index on cuisine field which will be used only when filtering on borough equal to “Staten
@@ -51,3 +51,58 @@
    it is indeed covered
    _Answer:_
    `db.restaurants.dropIndexes()` - drop all indexes from previuos tasks
+
+    before:
+
+    >       "winningPlan" : {
+    >                             "stage" : "PROJECTION_SIMPLE",
+    >                             "transformBy" : {
+    >                                     "name" : 1,
+    >                                     "_id" : 0
+    >                             },
+    >                             "inputStage" : {
+    >                                     "stage" : "COLLSCAN",
+    >                                     "filter" : {
+    >                                             "grades.8.score" : {
+    >                                                     "$lt" : 7
+    >                                             }
+    >                                     },
+    >                                     "direction" : "forward"
+    >                             }
+    >                     },
+
+
+    `db.restaurants.createIndex({ "grades.8.score": 1}, {partialFilterExpression:{"grades.8.score": {$lt:7}}})`
+    after:
+
+    > "winningPlan" : {
+    >                         "stage" : "PROJECTION_SIMPLE",
+    >                         "transformBy" : {
+    >                                 "name" : 1,
+    >                                 "_id" : 0
+    >                         },
+    >                         "inputStage" : {
+    >                                 "stage" : "FETCH",
+    >                                 "inputStage" : {
+    >                                         "stage" : "IXSCAN",
+    >                                         "keyPattern" : {
+    >                                                 "grades.8.score" : 1
+    >                                         },
+    >                                         "indexName" : "grades.8.score_1",
+    >                                         "isMultiKey" : false,
+    >                                         "multiKeyPaths" : {
+    >                                                 "grades.8.score" : [ ]
+    >                                         },
+    >                                         "isUnique" : false,
+    >                                         "isSparse" : false,
+    >                                         "isPartial" : true,
+    >                                         "indexVersion" : 2,
+    >                                         "direction" : "forward",
+    >                                         "indexBounds" : {
+    >                                                 "grades.8.score" : [
+    >                                                         "[-inf.0, 7.0)"
+    >                                                 ]
+    >                                         }
+    >                                 }
+    >                         }
+    >                 },
