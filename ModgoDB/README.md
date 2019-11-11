@@ -18,7 +18,7 @@
 
 5. What are \_id and borough of “Seafood” (cuisine) restaurants which received at least one “B” grade in period from 2014-02-01 to 2014-03-01? Use projection to include only \_id and borough.
    _Answer:_
-   `db.restaurants.find({ $and: [{cuisine: 'Seafood'}, {'grades.grade': "B"}, {'grades.date': {$gte: new Date('2014-02-01')}}, {'grades.date': {$lt: new Date('2014-03-01')}}]}, { borough: 1 })`
+   `db.restaurants.find({$and: [{cuisine: 'Seafood'}, {'grades': {$elemMatch: {grade: 'B', date: {$gte: new Date('2014-02-01'), $lt: new Date('2014-03-01')}}}}]}, { borough: 1 })`
 
 # Section 4. Indexing Restaurants Collection
 
@@ -36,7 +36,7 @@
    indeed covered:
    db.restaurants.find({ restaurant_id: "41098650" }, { \_id: 0, borough: 1 })
    _Answer:_
-   `db.restaurants.createIndex({ restaurant_id: 1 })`
+   `db.restaurants.createIndex({ restaurant_id: 1, borough: 1 })`
 
 4. Create a partial index on cuisine field which will be used only when filtering on borough equal to “Staten
    Island”:
@@ -45,7 +45,7 @@
    db.restaurants.find({ borough: "Queens", cuisine: "Pizza" }) – does not use index
    _Answer:_
    `db.restaurants.dropIndexes()` - drop all indexes from previuos tasks
-   `db.restaurants.createIndex( { cuisine: 1 }, { partialFilterExpression: { "borough": "Staten Island" } } } )`
+   `db.restaurants.createIndex( { cuisine: 1, borough: 1 }, { partialFilterExpression: { "borough": "Staten Island" } } } )`
 
 5. Create an index to make query from task 3.4 covered and provide proof (from explain() or Compass UI) that
    it is indeed covered
