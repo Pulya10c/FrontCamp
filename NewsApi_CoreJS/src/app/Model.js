@@ -1,12 +1,13 @@
 import QueryStringGenerator from './services/QueryStringGenerator';
 import RequestService from './services/RequestService';
+import { setLoggerForSetProps } from './common/Loggers';
 
 class Model {
-  data = {
+  data = setLoggerForSetProps({
     totalResults: 0,
     sources: [],
     articles: [],
-  };
+  });
   queryParams = {
     inputQueryText: '',
     selectedSource: '',
@@ -14,34 +15,36 @@ class Model {
     page: 1,
     articlesPerPage: 10,
   };
+  error = null;
+  requestService = new RequestService();
+  getResponse = this.requestService.factory('GET');
 
-  bindDataArticlesReceived = callback => {
+  bindDataArticlesReceived = (errorCallback, callback) => {
     this.onDataArticlesReceived = callback;
+    this.onError = errorCallback;
   };
 
-  bindDataArticlesUpdated = callback => {
-    this.onDataArticlesUpdated = callback;
-  };
-
-  bindDataSourcesReceived = callback => {
+  bindDataSourcesReceived = (errorCallback, callback) => {
     this.onDataSourcesReceived = callback;
+    this.onError = errorCallback;
   };
 
   getArticlesSources = () => {
     const queryString = QueryStringGenerator.getQueryStringSources();
-    RequestService.getResponse(queryString, this._saveSources);
+    this.getResponse(queryString, this._saveError, this._saveSources);
   };
 
   getMoreArticles = () => {
     this.queryParams.page += 1;
     const fullQueryString = QueryStringGenerator.getQueryStringArticles(this.queryParams);
-    RequestService.getResponse(fullQueryString, this._updatePreviousReceivedData);
+    this.getResponse(fullQueryString, this._saveError, this._updatePreviousReceivedData);
   };
 
   searchArticles = () => {
     this.queryParams.page = 1; // forced due to previous Search
+    this.error = null;
     const fullQueryString = QueryStringGenerator.getQueryStringArticles(this.queryParams);
-    RequestService.getResponse(fullQueryString, this._saveReceivedData);
+    this.getResponse(fullQueryString, this._saveError, this._saveReceivedData);
   };
 
   updateSelectedSource = sourceId => {
@@ -56,19 +59,24 @@ class Model {
     this.queryParams.inputQueryText = text;
   };
 
+  _saveError = ({ message }) => {
+    this.error = { message };
+    this.onError();
+  };
+
   _saveSources = ({ sources }) => {
     this.data.sources = sources.map(({ name, id }) => ({ name, id }));
     this.onDataSourcesReceived();
   };
 
-  _updatePreviousReceivedData = ({ articles }) => {
-    this.data.articles = articles;
-    this.onDataArticlesUpdated();
-  };
-
   _saveReceivedData = ({ articles, totalResults }) => {
     this.data.articles = articles;
     this.data.totalResults = totalResults;
+    this.onDataArticlesReceived();
+  };
+
+  _updatePreviousReceivedData = ({ articles }) => {
+    this.data.articles = this.data.articles.concat(articles);
     this.onDataArticlesReceived();
   };
 }

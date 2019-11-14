@@ -1,5 +1,8 @@
-class View {
+import BaseView from './common/BaseView';
+
+class View extends BaseView {
   constructor() {
+    super();
     this.app = this.getElement('#root');
 
     this.header = this.createElement('header', 'header');
@@ -18,6 +21,7 @@ class View {
     this.form = this.createElement('form', 'query-form');
 
     this.selectQuerySource = this.createElement('select', 'query-source-select');
+    this.selectQuerySource.disabled = true;
     this.selectQuerySource.value = '';
 
     this.inputQueryText = this.createElement('input', 'input-query-text');
@@ -42,23 +46,19 @@ class View {
     this.main.append(this.form, this.articlesList);
     this.app.append(this.header, this.main);
 
-    this.getMoreArticlesButton = this.createElement('button', 'get-more-button');
-    this.getMoreArticlesButton.textContent = 'Get More Articles';
+    this.getMoreArticlesButton = this._createGetMore();
   }
 
   updateDisabledSearchButton = ({ selectedSource, inputQueryText }) => {
     this.searchButton.disabled = !selectedSource && !inputQueryText;
   };
 
-  createElement = (tag, className) => {
-    const element = document.createElement(tag);
-    if (className) element.classList.add(className);
-    return element;
-  };
-
-  getElement = selector => {
-    const element = document.querySelector(selector);
-    return element;
+  renderErrorPopup = async message => {
+    this.errorComponent = await import('./common/Error');
+    const Error = this.errorComponent.default;
+    this.error = new Error();
+    this.error.setMessage(message);
+    this.error.insertInto(this.app);
   };
 
   renderSources = sources => {
@@ -77,38 +77,54 @@ class View {
       fragment.appendChild(option);
     });
     this.selectQuerySource.append(fragment);
+    this.selectQuerySource.disabled = false;
   };
 
   updateArticlesRender = ({ articles, totalResults, page, articlesPerPage }) => {
     this._renderArticlesList(articles);
     if (totalResults < articlesPerPage * page) {
+      this.observer.unobserve(this.getMoreArticlesButton);
       this.getMoreArticlesButton.remove();
     }
   };
 
   render = ({ articles, totalResults, page, articlesPerPage }) => {
-    while (this.articlesList.firstChild) {
-      this.articlesList.removeChild(this.articlesList.firstChild);
+    if (this.error) {
+      this.error.destroy();
     }
 
-    if (this.app.contains(this.getMoreArticlesButton)) {
-      this.getMoreArticlesButton.remove();
+    if (this.getMoreArticlesButton) {
+      this._destroyGetMore();
+    }
+
+    while (this.articlesList.firstChild) {
+      this.articlesList.removeChild(this.articlesList.firstChild);
     }
 
     if (articles.length === 0) {
       const li = this.createElement('li', 'nothing-to-display');
       li.textContent = 'Nothing to display according to your query';
       this.articlesList.append(li);
-
-      if (this.app.contains(this.getMoreArticlesButton)) {
-        this.getMoreArticlesButton.remove();
-      }
     } else {
       this._renderArticlesList(articles);
       if (totalResults > articlesPerPage * page) {
+        this.getMoreArticlesButton = this._createGetMore();
         this.app.append(this.getMoreArticlesButton);
+        this.observer.observe(this.getMoreArticlesButton);
       }
     }
+  };
+
+  _createGetMore = () => {
+    const element = this.createElement('button', 'get-more-button');
+    element.textContent = 'Get More Articles';
+    return element;
+  };
+
+  _destroyGetMore = () => {
+    this.observer.unobserve(this.getMoreArticlesButton);
+    this.getMoreArticlesButton.remove();
+    this.getMoreArticlesButton = null;
   };
 
   _renderArticlesList = articles => {
@@ -125,9 +141,7 @@ class View {
       linkTitle.textContent = `${title}`;
 
       const articleImage = this.createElement('img', 'article-image');
-      if (urlToImage) {
-        articleImage.src = `${urlToImage}`;
-      }
+      articleImage.src = urlToImage ? `${urlToImage}` : './images/no-image-found.png';
       articleImage.alt = `${title}`;
       articleLink.append(linkTitle, articleImage);
 
@@ -143,23 +157,26 @@ class View {
   };
 
   bindSelectQuerySourceChanged = handler => {
-    this.selectQuerySource.addEventListener('change', event => {
-      const { target } = event;
-      handler(target.value);
+    this.selectQuerySource.addEventListener('change', ({ target: { value } }) => {
+      handler(value);
     });
   };
 
   bindCheckboxChanged = handler => {
-    this.inputQueryLanguageCheckbox.addEventListener('change', event => {
-      const { target } = event;
-      handler(target.checked);
+    this.inputQueryLanguageCheckbox.addEventListener('change', ({ target: { checked } }) => {
+      handler(checked);
     });
   };
 
   bindInputQueryTextChanged = handler => {
-    this.inputQueryText.addEventListener('change', event => {
-      const { target } = event;
-      handler(target.value);
+    this.inputQueryText.addEventListener('input', ({ target: { value } }) => {
+      handler(value);
+    });
+  };
+
+  bindGetMoreArticlesIntersectedObserver = handler => {
+    this.observer = this.createObserver(() => {
+      handler();
     });
   };
 

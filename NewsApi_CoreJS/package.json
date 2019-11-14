@@ -1,11 +1,14 @@
 {
   "name": "news_api_core_js",
+  "homepage": "https://drdiman.github.io/FrontCamp/",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "dotenv-webpack": "^1.7.0"
@@ -19,9 +22,11 @@
     "@babel/runtime": "^7.6.3",
     "autoprefixer": "^9.4.4",
     "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.5",
     "css-loader": "^2.1.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.8",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.13.0",

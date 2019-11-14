@@ -3,10 +3,10 @@ class Controller {
     this.model = model;
     this.view = view;
 
-    this.model.bindDataSourcesReceived(this.onDataSourcesReceived);
-    this.model.bindDataArticlesReceived(this.onDataArticlesReceived);
-    this.model.bindDataArticlesUpdated(this.onDataArticlesUpdated);
+    this.model.bindDataSourcesReceived(this.handleErrorReceived, this.handleOnDataSourcesReceived);
+    this.model.bindDataArticlesReceived(this.handleErrorReceived, this.handleOnDataArticlesReceived);
 
+    this.view.bindGetMoreArticlesIntersectedObserver(this.handleGetMoreArticlesIntersectedObserver);
     this.view.bindGetMoreArticlesButtonClick(this.handleGetMoreArticlesClick);
     this.view.bindInputQueryTextChanged(this.handleQueryTextChanged);
     this.view.bindCheckboxChanged(this.handleLanguageChanged);
@@ -17,15 +17,27 @@ class Controller {
     this.model.getArticlesSources();
   }
 
-  onDataSourcesReceived = () => {
-    const { sources } = this.model.data;
+  handleErrorReceived = () => {
+    const {
+      error: { message },
+    } = this.model;
+
+    this.view.renderErrorPopup(message);
+  };
+
+  handleOnDataSourcesReceived = () => {
+    const {
+      data: { sources },
+    } = this.model;
 
     this.view.renderSources(sources);
   };
 
-  onDataArticlesReceived = () => {
-    const { articles, totalResults } = this.model.data;
-    const { page, articlesPerPage } = this.model.queryParams;
+  handleOnDataArticlesReceived = () => {
+    const {
+      data: { articles, totalResults },
+      queryParams: { page, articlesPerPage },
+    } = this.model;
 
     this.view.render({
       articles,
@@ -35,27 +47,23 @@ class Controller {
     });
   };
 
-  onDataArticlesUpdated = () => {
-    const { articles, totalResults } = this.model.data;
-    const { page, articlesPerPage } = this.model.queryParams;
-
-    this.view.updateArticlesRender({
-      articles,
-      totalResults,
-      page,
-      articlesPerPage,
-    });
-  };
-
   handleSourceChanged = sourceId => {
     this.model.updateSelectedSource(sourceId);
-    const { selectedSource, inputQueryText } = this.model.queryParams;
+
+    const {
+      queryParams: { selectedSource, inputQueryText },
+    } = this.model;
+
     this.view.updateDisabledSearchButton({ inputQueryText, selectedSource });
   };
 
   handleQueryTextChanged = text => {
     this.model.updateQueryText(text);
-    const { selectedSource, inputQueryText } = this.model.queryParams;
+
+    const {
+      queryParams: { selectedSource, inputQueryText },
+    } = this.model;
+
     this.view.updateDisabledSearchButton({ inputQueryText, selectedSource });
   };
 
@@ -64,6 +72,10 @@ class Controller {
   };
 
   handleGetMoreArticlesClick = () => {
+    this.model.getMoreArticles();
+  };
+
+  handleGetMoreArticlesIntersectedObserver = () => {
     this.model.getMoreArticles();
   };
 

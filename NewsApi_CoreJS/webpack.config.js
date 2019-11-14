@@ -3,12 +3,14 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index-bundle.js',
+    chunkFilename: '[name].bundle.js',
+    filename: '[name].bundle.js',
   },
   devtool: 'source-map',
   module: {
@@ -35,10 +37,6 @@ module.exports = {
               sourceMap: true,
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: { sourceMap: true, config: { path: './postcss.config.js' } },
-          // },
         ],
       },
       {
@@ -68,6 +66,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/asserts/images/*',
+        to: 'images/[name].[ext]',
+      },
+    ]),
     new WebpackNotifierPlugin(),
   ],
 };
