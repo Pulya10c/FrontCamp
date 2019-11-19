@@ -38,10 +38,18 @@
 5. Find the city (originCity) with the highest sum of passengers for each state (originState) of the United States (originCountry). Provide the city for the first 5 states ordered by state alphabetically (you should see the city for Alaska, Arizona and etc). Show result as {"totalPassengers" : 999, "location" : { "state" : "abc", "city" : "xyz"
    } }
    _Answer:_
-    `db.airlines.aggregate([{'$match':{'originCountry':'United States'}},{'$group':{'_id':{'city':'$originCity','state':'$originState'},'sumPassengers':{'$sum':'$passengers'}}},{'$sort':{'sumPassengers':-1}},{'$group':{'_id':{'state':'$_id.state'},'totalPassengers':{'$max':'$sumPassengers'},'city':{'$first':'$_id.city'}}},{'$sort':{'_id.state':1}},{'$limit':5},{'$project':{'_id':0,'totalPassengers':1,'location':{'city':'$city','state':'$_id.state'}}}])`
+   `db.airlines.aggregate([{'$match':{'originCountry':'United States'}},{'$group':{'_id':{'city':'$originCity','state':'$originState'},'sumPassengers':{'$sum':'$passengers'}}},{'$sort':{'sumPassengers':-1}},{'$group':{'_id':{'state':'$_id.state'},'totalPassengers':{'$max':'$sumPassengers'},'city':{'$first':'$_id.city'}}},{'$sort':{'_id.state':1}},{'$limit':5},{'$project':{'_id':0,'totalPassengers':1,'location':{'city':'$city','state':'$_id.state'}}}])`
 
 >     { "totalPassengers" : 760120, "location" : { "city" : "Birmingham, AL", "state" : "Alabama" } }
 >     { "totalPassengers" : 1472404, "location" : { "city" : "Anchorage, AK", "state" : "Alaska" } }
 >     { "totalPassengers" : 13152753, "location" : { "city" : "Phoenix, AZ", "state" : "Arizona" } }
 >     { "totalPassengers" : 571452, "location" : { "city" : "Little Rock, AR", "state" : "Arkansas" } }
 >     { "totalPassengers" : 23701556, "location" : { "city" : "Los Angeles, CA", "state" : "California" } }
+
+# Aggregating Enron Collection
+
+ - Which pair of people have the greatest number of messages in the dataset?
+_Answer:_
+`db.enron.aggregate([{$project:{from:'$headers.From',to:{"$setUnion":["$headers.To",[]]}}},{$unwind:{path:"$to"}},{$group:{_id:{from:"$from",to:"$to"},total:{$sum:1}}},{$sort:{total:-1}},{$limit:1}])`
+
+>     { "_id" : { "from" : "susan.mara@enron.com", "to" : "jeff.dasovich@enron.com" }, "total" : 750 }
