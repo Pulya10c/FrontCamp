@@ -1,0 +1,114 @@
+{
+    "articles": [
+        {
+            "_id": "1",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": null,
+            "title": "Diaz says he is out of UFC 244 after suggesting he has failed a doping test",
+            "description": "American Nate Diaz says will not fight at UFC 244 next week after suggesting he has failed a doping test.",
+            "url": "https://www.bbc.co.uk/sport/mixed-martial-arts/50177326",
+            "urlToImage": "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/8C60/production/_109363953_gettyimages-1162237419.jpg",
+            "publishedAt": "2019-10-24T22:42:39Z",
+            "content": "Nate Diaz (right) beat Anthony Pettis at UFC 241 in August\r\nAmerican Nate Diaz says will not fight at UFC 244 next week after suggesting he has failed a doping test. \r\nIn a post on Twitter he said he had been told he tested with \"elevated levels\" and although… [+414 chars]"
+        },
+        {
+            "_id": "2",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": "https://www.facebook.com/bbcnews",
+            "title": "PewDiePie: No, the world's biggest YouTuber is not banned in China",
+            "description": "Despite the headlines, there is little evidence to suggest the huegly popular YouTuber is banned in China.",
+            "url": "https://www.bbc.co.uk/news/blogs-trending-50166474",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/15EEB/production/_109353898_18092315-9500-466d-9f84-0e527d41895d.jpg",
+            "publishedAt": "2019-10-25T13:07:02Z",
+            "content": "Image copyrightPewDiePie/YouTubeImage caption\r\n PewDiePie is the most popular YouTuber in the world with more than 100 million subscribers\r\nHas China really banned PewDiePie?\r\nYou would be forgiven for thinking so. After all, several major international news … [+4237 chars]"
+        },
+        {
+            "_id": "3",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": null,
+            "title": "Ibrahimovic's LA Galaxy knocked out of MLS play-offs",
+            "description": "Zlatan Ibrahimovic's LA Galaxy are knocked out of the MLS Cup play-offs by Los Angeles FC in what could be the Swede's final MLS game.",
+            "url": "https://www.bbc.co.uk/sport/football/50178928",
+            "urlToImage": "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/13AAC/production/_109365508_zlatan_getty.jpg",
+            "publishedAt": "2019-10-25T06:19:45Z",
+            "content": "Zlatan Ibrahimovic has scored 30 goals for LA Galaxy this season\r\nZlatan Ibrahimovic's LA Galaxy were knocked out of the Major League Soccer Cup play-offs by Los Angeles FC in what could be the Swede's final MLS game.\r\nThe 38-year-old, whose contract expires … [+899 chars]"
+        },
+        {
+            "_id": "4",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": "https://www.facebook.com/bbcnews",
+            "title": "Ivan Milat: Australia's 'backpacker killer' dies aged 74",
+            "description": "Milat murdered seven hitchhikers between 1989 and 1992 and dumped their bodies in a state forest.",
+            "url": "https://www.bbc.co.uk/news/world-australia-50064571",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/53AB/production/_107091412_9c0b4786-1a57-4f06-bf54-4e3852521b40.jpg",
+            "publishedAt": "2019-10-26T22:42:20Z",
+            "content": "Image copyrightGetty ImagesImage caption\r\n Ivan Milat was convicted of murdering seven backpackers\r\nIvan Milat, a notorious Australian serial killer who kidnapped and murdered hitchhikers, has died aged 74.\r\nMilat had been serving a life sentence for killing … [+861 chars]"
+        },
+        {
+            "_id": "5",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": "BBC News",
+            "title": "Rats taught how to drive little cars",
+            "description": "Driving the tiny vehicles has been shown to reduce the rats' stress levels.",
+            "url": "https://www.bbc.co.uk/news/av/world-us-canada-50167807/rats-taught-how-to-drive-little-cars",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/1670B/production/_109351919_mediaitem109351918.jpg",
+            "publishedAt": "2019-10-24T09:48:18Z",
+            "content": null
+        },
+        {
+            "_id": "6",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": "https://www.facebook.com/bbcnews",
+            "title": "Thai king fires officials for 'extremely evil' conduct",
+            "description": "The removals come just days after his royal consort was stripped of her rank and titles.",
+            "url": "https://www.bbc.co.uk/news/world-asia-50157814",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/15472/production/_109345178_mediaitem109345177.jpg",
+            "publishedAt": "2019-10-23T16:02:56Z",
+            "content": "Image copyrightReutersImage caption\r\n King Vajiralongkorn has exercised his powers in a more direct way than his father\r\nThailand's King Vajiralongkorn has fired six officials for \"extremely evil\" conduct, just days after removing his royal consort for \"misbe… [+1240 chars]"
+        },
+        {
+            "_id": "7",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": null,
+            "title": "Bayern 'shocked' after attacks on fans at Olympiakos youth match",
+            "description": "Bayern Munich make an official complaint to Uefa after their Youth League match against Olympiakos was abandoned due to crowd violence.",
+            "url": "https://www.bbc.co.uk/sport/football/50160168",
+            "urlToImage": "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/6314/production/_109346352_gettyimages-945647912.jpg",
+            "publishedAt": "2019-10-23T16:49:48Z",
+            "content": "Players gathered on the side of the pitch as the match was abandoned\r\nBayern Munich have made an official complaint to Uefa after their Youth League match against Olympiakos was abandoned due to crowd violence.\r\nThe German giants said several fans were hospit… [+782 chars]"
+        },
+        {
+            "_id": "8",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": null,
+            "title": "Nationals extend World Series lead by thrashing Astros in game two",
+            "description": "The Washington Nationals take a 2-0 lead in the best-of-seven World Series after thrashing the Houston Astros 12-3 in game two.",
+            "url": "https://www.bbc.co.uk/sport/baseball/50164427",
+            "urlToImage": "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/146F9/production/_109350738_washingtoncelebrate_getty.jpg",
+            "publishedAt": "2019-10-24T05:36:04Z",
+            "content": "The Washington Nationals' Adam Eaton hit a solo home run against the Houston Astros\r\nThe Washington Nationals have taken a 2-0 lead in the best-of-seven World Series after thrashing the Houston Astros 12-3 in game two in Texas.\r\nBoth sides scored twice in the… [+2452 chars]"
+        },
+        {
+            "_id": "9",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": "BBC News",
+            "title": "Art starts conversations about being a black, Muslim woman",
+            "description": "Buki wants her art to start conversations about what it’s like to be a black, Muslim woman living in the UK.",
+            "url": "https://www.bbc.co.uk/news/av/stories-50101358/art-starts-conversations-about-being-a-black-muslim-woman",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/1C6E/production/_109287270_p07rf0vx.jpg",
+            "publishedAt": "2019-10-23T23:21:23Z",
+            "content": null
+        },
+        {
+            "_id": "10",
+            "source": { "id": "bbc-news", "name": "BBC News" },
+            "author": "https://www.facebook.com/bbcnews",
+            "title": "Argentina election: Voters dream of breaking cycle of crisis",
+            "description": "The country's troubled economy is at the centre of a highly polarised election. But who can fix it?",
+            "url": "https://www.bbc.co.uk/news/world-latin-america-50060089",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/31BE/production/_109243721_lucas.jpg",
+            "publishedAt": "2019-10-23T23:27:16Z",
+            "content": "Image copyrightGi Fly BikeImage caption\r\n Lucas Toledo got the idea for the quick-folding Gi Fly electric bike during a transport strike in 2015\r\n\"It's like trying to run an ice-cream parlour in the desert.\" \r\nThat is how entrepreneur Lucas Toledo describes t… [+7823 chars]"
+        }
+    ]
+}
