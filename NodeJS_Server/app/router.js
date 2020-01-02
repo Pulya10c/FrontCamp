@@ -22,20 +22,20 @@ router.get('/news', (req, res) => {
 });
 
 router.get('/news/:id', ({ params: { id } }, res) => {
-    newsModel.find({ _id: id }, (err, article) => {
+    newsModel.findOne({ _id: id }, (err, article) => {
         res.send(article);
     });
 });
 
 router.post('/news', connectEnsureLogin.ensureLoggedIn(), ({ body }, res) => {
-    newsModel.create(responseCollectionMock, (err, data) => {
-        res.status(200).send('New collection of the articles was added');
+    newsModel.create(responseArticleMock, (err, data) => {
+        res.status(200).send('The article was created');
     });
 });
 
-router.put('/news', connectEnsureLogin.ensureLoggedIn(), ({ body }, res) => {
-    newsModel.create(responseArticleMock, (err, data) => {
-        res.status(200).send('The article was created');
+router.put('/news/:id', connectEnsureLogin.ensureLoggedIn(), ({ params: { id }, body: { author } }, res) => {
+    newsModel.updateOne({ _id: id }, { author: author || 'tester' }, (err, data) => {
+        res.status(200).send('The article was updated');
     });
 });
 
@@ -72,8 +72,14 @@ router.get('/signUp', (req, res) => {
 
 router.post('/signUp', ({ body }, res) => {
     const { userName, password } = body;
-    usersModel.create({ userName, password }, (err, data) => {
-        res.redirect('/');
+    usersModel.findOne({ userName }, (err, user) => {
+        if (!user) {
+            usersModel.create({ userName, password }, (err, data) => {
+                res.redirect('/');
+            });
+        } else {
+            res.status(200).send('Please change user name');
+        }
     });
 });
 
