@@ -1,14 +1,16 @@
 const path = require('path');
 const WebpackNotifierPlugin = require('webpack-notifier');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+    publicPath: '/'
   },
   devServer: {
     historyApiFallback: true
@@ -49,19 +51,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      path: 'dist',
-      template: './public/index.html',
-      filename: 'index.html'
+      title: 'Video app',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+      }
     }),
-    // new MiniCssExtractPlugin({
-    //   filename: './public/style.css',
-    // }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: 'src/asserts/images/*',
-    //     to: 'images/[name].[ext]',
-    //   },
-    // ]),
+    new HtmlWebpackRootPlugin(),
+    new CleanWebpackPlugin(),
     new WebpackNotifierPlugin()
   ]
 };
