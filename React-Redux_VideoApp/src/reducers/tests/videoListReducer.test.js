@@ -1,5 +1,5 @@
 import videoListReducer, { initialState } from 'reducers/videoListReducer';
-import { DESCENDING, TITLE, API, RELEASE_DATE } from 'src/constants';
+import { API } from 'src/constants';
 import * as VideoListActions from 'actions/videoListActions';
 
 const state = undefined;

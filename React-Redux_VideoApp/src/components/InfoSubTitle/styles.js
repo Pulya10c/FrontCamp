@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { mediaMd, mediaSm } from 'utils/style-utils';
 
 export const InfoSubTitle = styled.h5`
-  font-size: 20px;
+  font-size: 16px;
   color: white;
 
   ${mediaMd`
-    font-size: 18px;
+    font-size: 14px;
   `};
 
   ${mediaSm`
-    font-size: 16px;
+    font-size: 12px;
   `};
 `;

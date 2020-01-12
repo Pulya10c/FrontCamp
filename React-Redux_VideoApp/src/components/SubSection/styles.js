@@ -1,6 +1,9 @@
 import styled from 'styled-components';
-// import { mediaMd, mediaSm } from 'utils/style-utils';
 
 export const SubSection = styled.section`
+  display: grid;
+  align-items: center;
   background-color: grey;
+  min-height: 55px;
+  padding: 10px;
 `;

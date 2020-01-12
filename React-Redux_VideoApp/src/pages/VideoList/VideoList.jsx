@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 
 import withErrorAndFetchingRoutePage from "hocs/withErrorAndFetchingRoutePage";
 import Header from "components/Header";
-import MainTitle from "components/MainTitle";
+import SubTitle from "components/SubTitle";
+import MainTitleAndSearchIcon from "containers/MainTitleAndSearchIcon";
+import SplitWrapper from "components/SplitWrapper";
 
 import SubSection from "components/SubSection";
 import SearchButton from "containers/SearchButton";
@@ -27,15 +29,18 @@ const VideoList = ({ fetchMovies }) => {
 
   return (
     <>
+      <MainTitleAndSearchIcon />
       <Header>
-        <MainTitle>FIND YOUR MOVIE</MainTitle>
+        <SubTitle>FIND YOUR MOVIE</SubTitle>
         <SearchInputText />
-        <SearchByToggler />
         <SearchButton />
+        <SearchByToggler />
       </Header>
       <SubSection>
-        <SearchResultsTotalInfo />
-        <SortByToggler />
+        <SplitWrapper>
+          <SearchResultsTotalInfo />
+          <SortByToggler />
+        </SplitWrapper>
       </SubSection>
       <VideoListGrid />
     </>

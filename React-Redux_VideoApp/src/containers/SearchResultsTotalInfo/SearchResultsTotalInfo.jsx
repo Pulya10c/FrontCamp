@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import SubSection from "components/SubSection";
 import InfoSubTitle from "components/InfoSubTitle";
 
 import { videoListTotalSelector } from "selectors/videoListSelectors";

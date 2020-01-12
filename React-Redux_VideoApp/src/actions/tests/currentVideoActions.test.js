@@ -3,7 +3,7 @@ import {
   resetSearchAngRedirect
 } from 'actions/currentVideoActions';
 
-import { API, GENRES, TITLE, PATHS } from 'src/constants';
+import { API, PATHS } from 'src/constants';
 import RequestService from 'services/RequestService';
 import * as videoListActions from 'actions/videoListActions';
 import * as uiActions from 'actions/uiStateActions';

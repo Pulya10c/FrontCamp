@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { mediaMd, mediaSm } from 'utils/style-utils';
 
-export const MainTitle = styled.h1`
-  font-size: 26px;
+export const SubTitle = styled.h3`
+  font-size: 20px;
 
   ${mediaMd`
-    font-size: 20px;
+    font-size: 18px;
   `};
 
   ${mediaSm`
-    font-size: 16px;
+    font-size: 14px;
   `};
 `;

@@ -8,6 +8,7 @@ import {
   filmReleaseDateSelector,
   filmOverviewSelector
 } from "selectors/currentVideoSelectors";
+import SplitWrapper from "components/SplitWrapper";
 
 const mapStateToProps = state => ({
   posterPath: filmPosterPathSelector(state),
@@ -25,7 +26,7 @@ const CurrentVideoCard = ({
   overview
 }) => {
   return (
-    <>
+    <SplitWrapper>
       <div>
         <img src={posterPath} />
       </div>
@@ -36,10 +37,16 @@ const CurrentVideoCard = ({
         </p>
         <p>{overview}</p>
       </div>
-    </>
+    </SplitWrapper>
   );
 };
 
-CurrentVideoCard.propTypes = {};
+CurrentVideoCard.propTypes = {
+  posterPath: PropTypes.string,
+  title: PropTypes.string,
+  rating: PropTypes.number,
+  releaseDate: PropTypes.string,
+  overview: PropTypes.string
+};
 
 export default connect(mapStateToProps, null)(CurrentVideoCard);

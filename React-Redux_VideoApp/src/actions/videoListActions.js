@@ -6,7 +6,7 @@ import RequestService from 'services/RequestService';
 import * as uiActions from 'actions/uiStateActions';
 import { goTo } from 'actions/routerActions';
 import { routerSearchSelector } from 'selectors/routerSelectors';
-import { PATHS, API, GENRES } from 'src/constants';
+import { PATHS, API } from 'src/constants';
 
 const MODULE_NAME = 'VIDEO_LIST';
 

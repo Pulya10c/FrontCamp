@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import withErrorAndFetchingRoutePage from "hocs/withErrorAndFetchingRoutePage";
 import Header from "components/Header";
 import SubSection from "components/SubSection";
-import SearchIcon from "containers/SearchIcon";
+import MainTitleAndSearchIcon from "containers/MainTitleAndSearchIcon";
 import SearchResultsGenresInfo from "containers/SearchResultsGenresInfo";
 import CurrentVideoCard from "containers/CurrentVideoCard";
 
@@ -28,8 +28,8 @@ const CurrentVideo = ({ fetchCurrentVideoAndSimilarFilms }) => {
 
   return (
     <>
+      <MainTitleAndSearchIcon />
       <Header>
-        <SearchIcon />
         <CurrentVideoCard />
       </Header>
       <SubSection>

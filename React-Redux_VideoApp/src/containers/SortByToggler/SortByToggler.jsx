@@ -6,7 +6,6 @@ import { SORT_BY_VALUES } from "src/constants";
 import Toggler from "components/Toggler";
 import { sortBySelector } from "selectors/videoListSelectors";
 import { sortByValueAndFetchMovies } from "actions/videoListActions";
-import { API } from "src/constants";
 
 const mapStateToProps = state => ({
   sortValue: sortBySelector(state)

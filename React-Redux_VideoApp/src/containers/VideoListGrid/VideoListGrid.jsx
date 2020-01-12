@@ -5,17 +5,12 @@ import { connect } from "react-redux";
 import Grid from "components/Grid";
 import Card from "components/Card";
 import { moviesDataSelector } from "selectors/videoListSelectors";
-import { PATHS } from "src/constants";
 
 const mapStateToProps = state => ({
   movies: moviesDataSelector(state)
 });
 
 const VideoListGrid = ({ movies }) => {
-  // static propTypes = {
-  //   prop: PropTypes
-  // };
-
   return (
     <Grid>
       {movies.length

@@ -6,7 +6,7 @@ export const Button = styled.button`
   font-size: 18px;
   line-height: 24px;
   outline: none;
-  background-color: #004db9;
+  background-color: #58ba83;
   border: 0;
   border-radius: 4px;
   color: white;
@@ -16,15 +16,15 @@ export const Button = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    background-color: #7792b8;
+    background-color: #454545;
   }
 
   &:hover:not(:disabled) {
-    background-color: #00183a;
+    background-color: #2b6846;
   }
 
   &:active {
-    background-color: #004db9;
+    background-color: #454545;
     opacity: 0.7;
   }
 `;

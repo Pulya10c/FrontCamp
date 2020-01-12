@@ -5,7 +5,7 @@ import {
   _updateFilterConfigInOrderToSearchParams
 } from 'actions/videoListActions';
 
-import { API, GENRES, TITLE, PATHS } from 'src/constants';
+import { PATHS } from 'src/constants';
 import RequestService from 'services/RequestService';
 import QueryStringGenerator from 'services/QueryStringGenerator';
 import * as uiActions from 'actions/uiStateActions';
