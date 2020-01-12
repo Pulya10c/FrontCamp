@@ -7,10 +7,7 @@ import {
 } from "./styles";
 
 class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+  state = { hasError: false };
 
   static getDerivedStateFromError(error) {
     console.error(error);

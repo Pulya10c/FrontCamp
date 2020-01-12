@@ -1,43 +1,51 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+import withErrorAndFetchingRoutePage from "hocs/withErrorAndFetchingRoutePage";
 import Header from "components/Header";
-
-import withErrorFetchingPage from "hocs/withErrorFetchingPage";
 import MainTitle from "components/MainTitle";
-import Toggler from "components/Toggler";
 
-import SearchButtonContainer from "containers/SearchButtonContainer";
+import SubSection from "components/SubSection";
+import SearchButton from "containers/SearchButton";
+import SearchInputText from "containers/SearchInputText";
+import SearchByToggler from "containers/SearchByToggler";
+import SearchResultsTotalInfo from "containers/SearchResultsTotalInfo";
+import SortByToggler from "containers/SortByToggler";
 
-import SearchInputTextContainer from "containers/SearchInputTextContainer";
-import SearchByTogglerContainer from "containers/SearchByTogglerContainer";
-
+import VideoListGrid from "containers/VideoListGrid";
 import { fetchMovies } from "actions/videoListActions";
 
 const mapDispatchToProps = dispatch => ({
   fetchMovies: () => dispatch(fetchMovies())
 });
 
-class VideoList extends Component {
-  componentDidMount() {
-    const { fetchMovies } = this.props;
+const VideoList = ({ fetchMovies }) => {
+  useEffect(() => {
     fetchMovies();
-  }
+  });
 
-  render() {
-    console.log("this.props Re", this.props);
-
-    return (
+  return (
+    <>
       <Header>
-        <MainTitle>Videos</MainTitle>
-        <SearchInputTextContainer />
-        <SearchByTogglerContainer />
-        <SearchButtonContainer />
+        <MainTitle>FIND YOUR MOVIE</MainTitle>
+        <SearchInputText />
+        <SearchByToggler />
+        <SearchButton />
       </Header>
-    );
-  }
-}
-export default withErrorFetchingPage(
+      <SubSection>
+        <SearchResultsTotalInfo />
+        <SortByToggler />
+      </SubSection>
+      <VideoListGrid />
+    </>
+  );
+};
+
+VideoList.propTypes = {
+  fetchMovies: PropTypes.func
+};
+
+export default withErrorAndFetchingRoutePage(
   connect(null, mapDispatchToProps)(VideoList)
 );

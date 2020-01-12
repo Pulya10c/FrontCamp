@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import {
@@ -8,40 +8,43 @@ import {
   TogglerTitle
 } from "./styles";
 
-class Toggler extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // }
-
-  render() {
-    const { togglerTitle, selectedValue, togglerOptions } = this.props;
-
-    return (
-      <TogglerWrapper>
-        <TogglerTitle>{togglerTitle}</TogglerTitle>
-        {togglerOptions.map((option, i) => (
-          <React.Fragment key={`${option}${i}`}>
-            <TogglerRadioOption
-              type="radio"
-              name={togglerTitle}
-              id={`${togglerTitle}${i}`}
-              value={option}
-              checked={selectedValue === option}
-              onChange={this.handleOptionChange}
-            />
-            <TogglerLabelOption htmlFor={`${togglerTitle}${i}`}>
-              {option}
-            </TogglerLabelOption>
-          </React.Fragment>
-        ))}
-      </TogglerWrapper>
-    );
-  }
-
-  handleOptionChange = ({ target: { value } }) => {
-    const { setToggleValue } = this.props;
+const Toggler = ({
+  togglerTitle,
+  selectedValue,
+  togglerOptions,
+  setToggleValue
+}) => {
+  const handleOptionChange = ({ target: { value } }) => {
     setToggleValue(value);
   };
-}
+
+  return (
+    <TogglerWrapper>
+      <TogglerTitle>{togglerTitle}</TogglerTitle>
+      {togglerOptions.map(({ code, text }, i) => (
+        <React.Fragment key={`${code}${i}`}>
+          <TogglerRadioOption
+            type="radio"
+            name={code}
+            id={`${code}${i}`}
+            value={code}
+            checked={selectedValue === code}
+            onChange={handleOptionChange}
+          />
+          <TogglerLabelOption htmlFor={`${code}${i}`}>
+            {text}
+          </TogglerLabelOption>
+        </React.Fragment>
+      ))}
+    </TogglerWrapper>
+  );
+};
+
+Toggler.propTypes = {
+  togglerTitle: PropTypes.string,
+  selectedValue: PropTypes.string,
+  togglerOptions: PropTypes.array,
+  setToggleValue: PropTypes.func
+};
 
 export default Toggler;

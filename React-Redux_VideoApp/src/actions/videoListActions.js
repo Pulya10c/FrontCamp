@@ -6,7 +6,7 @@ import RequestService from 'services/RequestService';
 import * as uiActions from 'actions/uiStateActions';
 import { goTo } from 'actions/routerActions';
 import { routerSearchSelector } from 'selectors/routerSelectors';
-import { PATHS, API } from 'src/constants';
+import { PATHS, API, GENRES } from 'src/constants';
 
 const MODULE_NAME = 'VIDEO_LIST';
 
@@ -47,48 +47,27 @@ export const updateFilterConfigBy = {
   })
 };
 
-export const setSortOrderValue = value => {
-  return {
-    type: SET_SORT_ORDER_VALUE,
-    payload: value
-  };
-};
-
-export const saveMovies = movies => {
+// export for tests
+export const _saveMovies = movies => {
   return {
     type: SAVE_MOVIES,
     payload: movies
   };
 };
 
-export const updateFilterFromSearchParams = () => {
-  return {
-    type: UPDATE_FILTER_FROM_SEARCH_PARAMS
-  };
-};
+const _updateFilterFromSearchParams = () => ({
+  type: UPDATE_FILTER_FROM_SEARCH_PARAMS
+});
 
-export const createSearch = () => (dispatch, getState) => {
-  try {
-    const state = getState();
-    const filterConfig = filterConfigSelector(state);
-    const searchStr = QueryStringGenerator.getSearchStr(filterConfig);
-    goTo(PATHS.VIDEO_LIST_PAGE, searchStr);
-    dispatch(fetchMovies());
-  } catch (error) {
-    console.error(error);
-    dispatch(uiActions.setError(error));
-  }
-};
-
-const updateFilterConfigInOrderToSearchParams = (
+// export for tests
+export const _updateFilterConfigInOrderToSearchParams = (
   searchStr,
   filterConfig
 ) => dispatch => {
   const searchParams = new URLSearchParams(searchStr);
-
   for (const [key, value] of searchParams) {
-    if (has(filterConfig, key) && filterConfig[key] !== value) {
-      dispatch(updateFilterFromSearchParams());
+    if (has(filterConfig, key) && filterConfig[key] != value) {
+      dispatch(_updateFilterFromSearchParams());
       dispatch(updateFilterConfigBy[key](value));
     }
   }
@@ -96,18 +75,29 @@ const updateFilterConfigInOrderToSearchParams = (
 
 export const fetchMovies = () => async (dispatch, getState) => {
   try {
-    dispatch(uiActions.startFetching());
     const state = getState();
     const searchStr = routerSearchSelector(state);
     const filterConfig = filterConfigSelector(state);
-    dispatch(updateFilterConfigInOrderToSearchParams(searchStr, filterConfig));
-
+    dispatch(_updateFilterConfigInOrderToSearchParams(searchStr, filterConfig));
     const queryString = QueryStringGenerator.getUrlForRequest(searchStr);
+    dispatch(uiActions.startFetching());
     const movies = await RequestService.getResponse(queryString);
     dispatch(uiActions.finishFetching());
-    dispatch(saveMovies(movies));
+    dispatch(_saveMovies(movies));
   } catch (error) {
     console.error(error);
     dispatch(uiActions.setError(error));
   }
+};
+
+export const createSearchAndRedirect = () => (dispatch, getState) => {
+  const state = getState();
+  const filterConfig = filterConfigSelector(state);
+  const searchStr = QueryStringGenerator.getSearchStr(filterConfig);
+  goTo(PATHS.VIDEO_LIST_PAGE, searchStr);
+};
+
+export const sortByValueAndFetchMovies = value => dispatch => {
+  dispatch(updateFilterConfigBy[API.SORT_BY](value));
+  dispatch(createSearchAndRedirect());
 };

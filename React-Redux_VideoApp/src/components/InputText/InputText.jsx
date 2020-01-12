@@ -1,34 +1,33 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+
 import { SearchInputText } from "./styles";
 
-class InputText extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // };
-
-  render() {
-    const { inputValue } = this.props;
-    return (
-      <SearchInputText
-        type="text"
-        value={inputValue}
-        onChange={this.handleSearchChange}
-        onKeyUp={this.handleSearchKeyUp}
-      />
-    );
-  }
-
-  handleSearchKeyUp = ({ key }) => {
+const InputText = ({ inputValue, executeActionByEnter, setInputValue }) => {
+  const handleSearchKeyUp = ({ key }) => {
     if (key === "Enter") {
-      const { executeActionByEnter } = this.props;
       executeActionByEnter();
     }
   };
 
-  handleSearchChange = ({ target: { value } }) => {
-    const { setInputValue } = this.props;
+  const handleSearchChange = ({ target: { value } }) => {
     setInputValue(value);
   };
-}
+
+  return (
+    <SearchInputText
+      type="text"
+      value={inputValue}
+      onChange={handleSearchChange}
+      onKeyUp={handleSearchKeyUp}
+    />
+  );
+};
+
+InputText.propTypes = {
+  inputValue: PropTypes.string,
+  executeActionByEnter: PropTypes.func,
+  setInputValue: PropTypes.func
+};
 
 export default InputText;

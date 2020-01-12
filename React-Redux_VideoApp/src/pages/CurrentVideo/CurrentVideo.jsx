@@ -1,25 +1,49 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
 
+import withErrorAndFetchingRoutePage from "hocs/withErrorAndFetchingRoutePage";
 import Header from "components/Header";
-import SearchButtonContainer from "containers/SearchButtonContainer";
-import SearchInputTextContainer from "containers/SearchInputTextContainer";
-import SearchByTogglerContainer from "containers/SearchByTogglerContainer";
+import SubSection from "components/SubSection";
+import SearchIcon from "containers/SearchIcon";
+import SearchResultsGenresInfo from "containers/SearchResultsGenresInfo";
+import CurrentVideoCard from "containers/CurrentVideoCard";
 
-class CurrentVideo extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // };
+import VideoListGrid from "containers/VideoListGrid";
+import { fetchCurrentVideoAndSimilarFilms } from "actions/currentVideoActions";
 
-  render() {
-    return (
+const mapDispatchToProps = dispatch => ({
+  fetchCurrentVideoAndSimilarFilms: id =>
+    dispatch(fetchCurrentVideoAndSimilarFilms(id))
+});
+
+const CurrentVideo = ({ fetchCurrentVideoAndSimilarFilms }) => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetchCurrentVideoAndSimilarFilms(id);
+  }, [id]);
+
+  return (
+    <>
       <Header>
-        <SearchInputTextContainer />
-        <SearchByTogglerContainer />
-        <SearchButtonContainer />
+        <SearchIcon />
+        <CurrentVideoCard />
       </Header>
-    );
-  }
-}
+      <SubSection>
+        <SearchResultsGenresInfo />
+      </SubSection>
+      <VideoListGrid />
+    </>
+  );
+};
 
-export default CurrentVideo;
+CurrentVideo.propTypes = {
+  fetchCurrentVideoAndSimilarFilms: PropTypes.func.isRequired
+};
+
+export default withErrorAndFetchingRoutePage(
+  connect(null, mapDispatchToProps)(CurrentVideo)
+);

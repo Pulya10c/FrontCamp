@@ -1,5 +1,3 @@
-import { filterConfigSelector } from 'selectors/videoListSelectors';
-
 const MODULE_NAME = 'UI';
 
 export const START_FETCHING = `${MODULE_NAME}/START_FETCHING`;
@@ -18,9 +16,12 @@ export const finishFetching = () => {
   };
 };
 
-export const setError = error => {
+export const setError = ({ name, message }) => {
   return {
     type: SET_ERROR,
-    payload: error
+    payload: {
+      name,
+      message
+    }
   };
 };

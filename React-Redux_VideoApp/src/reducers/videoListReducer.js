@@ -7,15 +7,15 @@ import {
   SET_LIMIT_VALUE,
   SAVE_MOVIES
 } from 'actions/videoListActions';
-import { DESCENDING, TITLE, API } from 'src/constants';
+import { DESCENDING, TITLE, API, RELEASE_DATE } from 'src/constants';
 
 export const initialState = {
   movies: {},
   filterConfig: {
     [API.SEARCH]: '',
-    [API.SEARCH_BY]: TITLE,
+    [API.SEARCH_BY]: TITLE.code,
     [API.SORT_ORDER]: DESCENDING,
-    [API.SORT_BY]: '',
+    [API.SORT_BY]: RELEASE_DATE.code,
     [API.OFFSET]: 0,
     [API.LIMIT]: 15
   }

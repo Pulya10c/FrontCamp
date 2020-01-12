@@ -1,8 +1,18 @@
-const initialState = {};
+import { SAVE_FILM } from 'actions/currentVideoActions';
 
-export default function currentVideoReducer(state = initialState, action) {
-  switch (action.type) {
-    default:
-      return state;
+export const initialState = {};
+
+const ACTION_HANDLERS = {
+  [SAVE_FILM]: (state, { payload }) => {
+    return {
+      ...payload
+    };
   }
-}
+};
+
+const currentVideoReducer = (state = initialState, action) => {
+  const handler = ACTION_HANDLERS[action.type];
+  return handler ? handler(state, action) : state;
+};
+
+export default currentVideoReducer;

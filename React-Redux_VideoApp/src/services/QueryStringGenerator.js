@@ -2,7 +2,7 @@ import { API } from 'src/constants';
 
 class QueryStringGenerator {
   baseURL = 'https://reactjs-cdp.herokuapp.com';
-  movies = '/movies';
+  movies = '/movies/';
 
   // sortBy -> Field to sort by
   // sortOrder -> Value to define sort direction - 'desc' or 'asc'
@@ -20,10 +20,10 @@ class QueryStringGenerator {
     let searchStr = `?`;
     searchStr += this._addSortBy(sortBy);
     searchStr += this._addSortOrder(sortOrder);
-    searchStr += this._addSearch(search);
-    searchStr += this._addSearchBy(searchBy);
     searchStr += this._addOffset(offset);
     searchStr += this._addLimit(limit);
+    searchStr += this._addSearchBy(searchBy);
+    searchStr += this._addSearch(search);
 
     return searchStr;
   };
@@ -41,9 +41,7 @@ class QueryStringGenerator {
   };
 
   _addSearch = queryText => {
-    return queryText
-      ? `&${API.SEARCH}=${encodeURIComponent(queryText.replace(/\s+/g, '+'))}`
-      : '';
+    return queryText ? `&${API.SEARCH}=${encodeURIComponent(queryText)}` : '';
   };
 
   _addSortBy = sortBy => {
