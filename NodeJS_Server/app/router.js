@@ -1,7 +1,6 @@
 const express = require('express');
 const connectEnsureLogin = require('connect-ensure-login');
 
-const responseCollectionMock = require('./mocks/responseCollection');
 const responseArticleMock = require('./mocks/responseArticle');
 const passport = require('./passport');
 const logger = require('./logger');
