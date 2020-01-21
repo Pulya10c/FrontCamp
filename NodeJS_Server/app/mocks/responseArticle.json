@@ -1,0 +1,10 @@
+{
+    "source": { "id": "TEST", "name": "BBC TEST" },
+    "author": "https://www.test.test",
+    "title": "test",
+    "description": "test test test test test test test test test test test test ",
+    "url": "https://www.test.by",
+    "urlToImage": "https://test.jpg",
+    "publishedAt": "2019-10-26T22:42:20Z",
+    "content": "test test test test test test "
+}
