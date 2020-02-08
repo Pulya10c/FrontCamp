@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component MainTitle should render correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  font-size: 26px;
+
+  ",
+          "
+  @media (max-width: ",
+          "768",
+          "px) {
+    ",
+          "
+    font-size: 20px;
+  ",
+          ";
+  }
+",
+          ";
+
+  ",
+          "
+  @media (max-width: ",
+          "576",
+          "px) {
+    ",
+          "
+    font-size: 16px;
+  ",
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "styled.h1",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "h1",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

@@ -64,6 +64,7 @@
   },
   "_moduleAliases": {
     "src": "src",
+    "mocks": "src/mocks",
     "hocs": "src/hocs",
     "pages": "src/pages",
     "containers": "src/containers",

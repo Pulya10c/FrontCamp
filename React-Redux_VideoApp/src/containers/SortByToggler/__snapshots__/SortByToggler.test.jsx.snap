@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component SortByToggler should render correctly 1`] = `
+<Toggler
+  selectedValue="mockSortBySelector"
+  togglerOptions={
+    Array [
+      Object {
+        "code": "release_date",
+        "text": "Release date",
+      },
+      Object {
+        "code": "vote_average",
+        "text": "Rating",
+      },
+    ]
+  }
+  togglerTitle="SORT BY"
+/>
+`;

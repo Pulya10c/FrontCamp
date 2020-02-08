@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component SearchResultsTotalInfo should render correctly 1`] = `
+<styled.h5>
+  42
+   
+  movies were
+   found
+</styled.h5>
+`;

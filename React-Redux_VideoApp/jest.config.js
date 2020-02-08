@@ -5,6 +5,7 @@ const srcDirPath = path.resolve(__dirname, './src/');
 const configDirPath = path.resolve(__dirname, './configs/');
 
 const moduleDirNames = [
+  'mocks',
   'hocs',
   'pages',
   'containers',

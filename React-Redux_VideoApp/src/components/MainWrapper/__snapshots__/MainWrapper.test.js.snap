@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component MainWrapper should render correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 5px;
+
+  ",
+          "
+  @media (max-width: ",
+          "768",
+          "px) {
+    ",
+          "
+     max-width: 720px;
+  ",
+          ";
+  }
+",
+          ";
+
+  ",
+          "
+  @media (max-width: ",
+          "576",
+          "px) {
+    ",
+          "
+     max-width: 550px;
+  ",
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "styled.main",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "main",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

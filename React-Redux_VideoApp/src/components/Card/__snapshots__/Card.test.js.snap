@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Card should render correctly 1`] = `
+<Styled(Link)
+  to="mockTo"
+>
+  <img
+    alt="mockTitle"
+    src="mockPosterPath"
+  />
+  <h4>
+    mockTitle
+  </h4>
+  <span>
+    mockSubTitle
+  </span>
+  <p>
+    mockDescription
+  </p>
+  <p>
+    mockYear
+  </p>
+</Styled(Link)>
+`;

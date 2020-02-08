@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component SearchByToggler should render correctly 1`] = `
+<Toggler
+  selectedValue="mockSearchByValue"
+  togglerOptions={
+    Array [
+      Object {
+        "code": "title",
+        "text": "Title",
+      },
+      Object {
+        "code": "genres",
+        "text": "Genres",
+      },
+    ]
+  }
+  togglerTitle="SEARCH BY"
+/>
+`;

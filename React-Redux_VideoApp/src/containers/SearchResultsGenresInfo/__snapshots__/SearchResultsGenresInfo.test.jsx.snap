@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component SearchResultsGenresInfo should render correctly 1`] = `
+<styled.h5>
+  Films by the same 
+  mock1, mock2
+   
+  genres
+</styled.h5>
+`;

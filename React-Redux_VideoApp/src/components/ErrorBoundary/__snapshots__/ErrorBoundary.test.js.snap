@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component ErrorBoundary should render Child correctly 1`] = `<Child />`;
+
+exports[`Component ErrorBoundary should render ErrorWrapper correctly 1`] = `
+<styled.div>
+  <styled.h1>
+    Sorry!
+  </styled.h1>
+  <styled.h2>
+    Something went wrong.
+  </styled.h2>
+  <styled.p>
+    Try to 
+    <a
+      onClick={[Function]}
+    >
+      REFRESH
+    </a>
+     the page
+  </styled.p>
+</styled.div>
+`;
