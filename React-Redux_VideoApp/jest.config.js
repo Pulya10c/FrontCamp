@@ -42,10 +42,10 @@ module.exports = {
     [
       '@reportportal/reportportal-agent-jest',
       {
-        token: '68712127-e39a-4e56-910a-e027da886282',
         endpoint: 'https://rp.epam.com/api/v1',
         project: 'dzmitry_astraukh_personal',
-        launch: 'react_redux_video_app'
+        launch: 'react_redux_video_app',
+        tags: ['tag1', 'tag2']
       }
     ]
   ]
