@@ -35,5 +35,18 @@ module.exports = {
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
   moduleNameMapper: createModuleNameMapperObject(moduleDirNames),
-  snapshotSerializers: ['enzyme-to-json/serializer']
+  snapshotSerializers: ['enzyme-to-json/serializer'],
+  reporters: [
+    'default',
+    'jest-junit',
+    [
+      '@reportportal/reportportal-agent-jest',
+      {
+        token: '68712127-e39a-4e56-910a-e027da886282',
+        endpoint: 'https://rp.epam.com/api/v1',
+        project: 'dzmitry_astraukh_personal',
+        launch: 'react_redux_video_app'
+      }
+    ]
+  ]
 };
