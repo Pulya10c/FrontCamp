@@ -26,19 +26,25 @@ router.get('/news/:id', ({ params: { id } }, res) => {
     });
 });
 
-router.post('/news', connectEnsureLogin.ensureLoggedIn(), ({ body }, res) => {
+router.post('/news', 
+// connectEnsureLogin.ensureLoggedIn(), 
+({ body }, res) => {
     newsModel.create(responseArticleMock, (err, data) => {
         res.status(200).send('The article was created');
     });
 });
 
-router.put('/news/:id', connectEnsureLogin.ensureLoggedIn(), ({ params: { id }, body: { author } }, res) => {
+router.put('/news/:id', 
+// connectEnsureLogin.ensureLoggedIn(),
+ ({ params: { id }, body: { author } }, res) => {
     newsModel.updateOne({ _id: id }, { author: author || 'tester' }, (err, data) => {
         res.status(200).send('The article was updated');
     });
 });
 
-router.delete('/news/:id', connectEnsureLogin.ensureLoggedIn(), ({ params: { id } }, res) => {
+router.delete('/news/:id',
+//  connectEnsureLogin.ensureLoggedIn(), 
+ ({ params: { id } }, res) => {
     newsModel.deleteOne({ _id: id }, (err, data) => {
         res.status(200).send('The article was deleted');
     });

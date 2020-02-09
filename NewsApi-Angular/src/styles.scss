@@ -1,0 +1,66 @@
+@mixin sm {
+  @media (max-width: $screen-sm-max) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $screen-md-max) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  min-height: 100vh;
+  background-color: #eff1f2;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+button {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 24px;
+  outline: none;
+  background-color: #004db9;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #7792b8;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #00183a;
+  }
+
+  &:active {
+    background-color: #004db9;
+    opacity: 0.7;
+  }
+}

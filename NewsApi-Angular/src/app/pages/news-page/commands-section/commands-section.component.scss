@@ -1,0 +1,77 @@
+@mixin sm {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+form {
+  margin: 5px;
+  display: grid;
+  grid-gap: 3px;
+  grid-template-areas:
+    'sources queryText queryText searchButton'
+    'onlyMy  onlyMy    onlyMy    searchButton';
+
+  @include md {
+    grid-template-areas:
+      'sources   searchButton'
+      'queryText searchButton'
+      'onlyMy    searchButton';
+  }
+
+  @include sm {
+    grid-template-areas:
+      'sources   searchButton'
+      'queryText searchButton'
+      'onlyMy    searchButton';
+  }
+
+  .query-source-select {
+    grid-area: sources;
+  }
+  .input-query-text {
+    grid-area: queryText;
+  }
+  .label-input-query-onlyMy-checkbox {
+    grid-area: onlyMy;
+  }
+  .search-button {
+    grid-area: searchButton;
+  }
+
+  .input-query-onlyMy-checkbox {
+    margin-left: 10px;
+    transform: scale(1.2);
+  }
+
+  .query-source-select,
+  .input-query-text,
+  .label-input-query-onlyMy-checkbox {
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    background: white;
+    border: 1px solid rgba(31, 64, 111, 0.2);
+    border-radius: 4px;
+  }
+
+  .query-source-select:focus,
+  .input-query-text:focus {
+    border-color: #004db9;
+  }
+
+  .label-input-query-onlyMy-checkbox {
+    font-size: 16px;
+    line-height: 20px;
+    align-items: center;
+    cursor: pointer;
+  }
+}

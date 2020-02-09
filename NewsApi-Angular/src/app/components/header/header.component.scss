@@ -1,0 +1,29 @@
+@mixin sm {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.header {
+  padding: 10px 0 0;
+  text-align: center;
+
+  .main-title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 30px;
+
+    @include md {
+      font-size: 26px;
+    }
+
+    @include sm {
+      font-size: 20px;
+    }
+  }
+}

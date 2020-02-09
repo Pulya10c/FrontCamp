@@ -1,0 +1,16 @@
+<section>
+  <p [textContent]="source"></p>
+  <ul class="articles-list">
+    <li *ngIf="isEmpty" class="nothing-to-display">
+      Nothing to display according to your query
+    </li>
+    <li *ngFor="let article of articles" class="article">
+      <h3 class="article-title">{{ article.title }}</h3>
+      <a href="{{ article.url }}" target="_blank" class="article-link">
+        <span class="link-title">{{ article.title }}</span>
+      </a>
+      <img class="article-image" src="{{ article.urlToImage }}" />
+      <p class="article-content">{{ article.description }}</p>
+    </li>
+  </ul>
+</section>

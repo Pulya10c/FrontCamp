@@ -1,0 +1,36 @@
+<section>
+  <h2>Edit</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <label>
+      Title
+      <input type="text" formControlName="title" class="input-query-text" />
+    </label>
+    <label>
+      Short description
+      <input type="text" formControlName="description" class="input-query-text" />
+    </label>
+    <label>
+      Content
+      <input type="text" formControlName="content" class="input-query-text" />
+    </label>
+    <label>
+      Image URL
+      <input type="text" formControlName="urlToImage" class="input-query-text" />
+    </label>
+    <label>
+      Date
+      <input type="text" formControlName="date" class="input-query-text" />
+    </label>
+    <label>
+      Author
+      <input type="text" formControlName="author" class="input-query-text" />
+    </label>
+    <label>
+      Source URL
+      <input type="text" formControlName="source" class="input-query-text" />
+    </label>
+    <!-- disable button -->
+    <button type="submit" class="search-button" [disabled]="isDisabledSearch()">Save</button>
+    <button routerLink="/news">Cancel</button>
+  </form>
+</section>

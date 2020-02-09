@@ -1,0 +1,23 @@
+<section>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <select formControlName="selectedSource" class="query-source-select">
+      <option class="option-source"></option>
+      <option *ngFor="let source of sources" class="option-source" [value]=[source.id]>
+        {{ source.name }}
+      </option>
+    </select>
+    <input type="text" formControlName="inputQueryText" class="input-query-text" />
+    <label class="label-input-query-onlyMy-checkbox">
+      Only my articles:
+      <input
+        type="checkbox"
+        formControlName="onlyMy"
+        class="input-query-onlyMy-checkbox"
+      />
+    </label>
+    <button type="submit" class="search-button" [disabled]="isDisabledSearch()">
+      Search
+    </button>
+  </form>
+  <button routerLink="/add">Add Article</button>
+</section>
