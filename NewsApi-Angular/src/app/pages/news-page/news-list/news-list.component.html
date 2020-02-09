@@ -6,11 +6,12 @@
     </li>
     <li *ngFor="let article of articles" class="article">
       <h3 class="article-title">{{ article.title }}</h3>
-      <a href="{{ article.url }}" target="_blank" class="article-link">
-        <span class="link-title">{{ article.title }}</span>
+      <a routerLink="{{ article.id }}">
+        <img class="article-image" src="{{ article.urlToImage }}" />
       </a>
-      <img class="article-image" src="{{ article.urlToImage }}" />
       <p class="article-content">{{ article.description }}</p>
+      <button >delete</button>
+      <button>edit</button>
     </li>
   </ul>
 </section>

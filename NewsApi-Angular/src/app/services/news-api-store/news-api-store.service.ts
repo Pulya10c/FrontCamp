@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, of } from 'rxjs';
-import QueryStringGeneratorService from '../query-string-generator/query-string-generator.service';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, of } from "rxjs";
+import QueryStringGeneratorService from "../query-string-generator/query-string-generator.service";
+import { filter } from "rxjs/operators";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class NewsApiStoreService {
   public DATA;
   public QUERY_PARAMS;
@@ -18,9 +19,9 @@ export class NewsApiStoreService {
     });
 
     this.QUERY_PARAMS = new BehaviorSubject<any>({
-      inputQueryText: 'Angular',
-      selectedSource: '',
-      onlyMy: '',
+      inputQueryText: "Angular",
+      selectedSource: "",
+      onlyMy: "",
       page: 1,
       articlesPerPage: 10
     });
@@ -61,13 +62,18 @@ export class NewsApiStoreService {
   fetchArticles() {
     this.http
       .get<any>(
-        QueryStringGeneratorService.getQueryStringArticles(this.getQueryParams())
+        QueryStringGeneratorService.getQueryStringArticles(
+          this.getQueryParams()
+        )
       )
       .subscribe(({ articles, totalResults }) => {
         const data = this.getData();
         const newData = {
           ...data,
-          articles,
+          articles: articles.map(article => ({
+            id: this.getUniqId(),
+            ...article
+          })),
           totalResults
         };
         this.setData(newData);
@@ -84,6 +90,17 @@ export class NewsApiStoreService {
     };
     this.setQueryParams(newData);
   }
+
+  getUniqId() {
+    return `${performance.now()}`.replace(".", "");
+  }
+
+  // getArticle(articleID: any) {
+  //   console.log("articleID", articleID);
+  //   return this.dataObserv.pipe(
+  //     filter(({ articles }) => articles.id === articleID)
+  //   );
+  // }
 
   // private readonly inputQueryText: string = 'type script';
   // private readonly selectedSource: string = ';
