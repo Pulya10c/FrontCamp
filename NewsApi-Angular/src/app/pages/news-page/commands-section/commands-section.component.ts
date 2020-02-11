@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component, OnInit, OnChanges } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NewsApiStoreService } from "../../../services/news-api-store/news-api-store.service";
 
 @Component({
@@ -7,13 +7,10 @@ import { NewsApiStoreService } from "../../../services/news-api-store/news-api-s
   templateUrl: "./commands-section.component.html",
   styleUrls: ["./commands-section.component.scss"]
 })
-export class CommandsSectionComponent implements OnInit {
-  searchForm = new FormGroup({
-    selectedSource: new FormControl(""),
-    inputQueryText: new FormControl(""),
-    onlyMy: new FormControl("")
-  });
+export class CommandsSectionComponent implements OnInit, OnChanges {
+  searchForm;
   sources = [];
+  isDisabledSearch: boolean;
 
   constructor(private NewsApiStore: NewsApiStoreService) {}
 
@@ -22,11 +19,23 @@ export class CommandsSectionComponent implements OnInit {
     this.NewsApiStore.dataObserv.subscribe(({ sources }) => {
       this.sources = sources;
     });
+    this.NewsApiStore.queryParamsObserv.subscribe(
+      ({ inputQueryText, selectedSource, onlyMy }) => {
+        this.searchForm = new FormGroup({
+          selectedSource: new FormControl(selectedSource, [
+            Validators.required
+          ]),
+          inputQueryText: new FormControl(inputQueryText),
+          onlyMy: new FormControl(onlyMy)
+        });
+      }
+    );
   }
 
-  isDisabledSearch() {
-    return false;
-    //  !this.searchForm.selectedSource || !this.searchForm.inputQueryText;
+  ngOnChanges() {
+    // this.isDisabledSearch =
+    //   !this.searchForm.selectedSource || !this.searchForm.inputQueryText;
+    // console.log("isDisabledSearch", this.isDisabledSearch);
   }
 
   addArticle() {

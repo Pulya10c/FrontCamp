@@ -18,7 +18,15 @@ class QueryStringGeneratorService {
     return queryString;
   }
 
+  getOnlyMyURL() {
+    return `${this.onlyMyURL}${this.news}`;
+  }
+
   getQueryStringArticles({ inputQueryText, onlyMy, selectedSource, articlesPerPage, page }) {
+    if (onlyMy) {
+      return this.getOnlyMyURL();
+    }
+
     let queryString = `${this.baseURL}${this.everything}`;
     queryString += this.addQueryText(inputQueryText);
     queryString += this.addSortByPopularity();

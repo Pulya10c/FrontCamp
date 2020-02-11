@@ -38,11 +38,11 @@ export class NewsApiStoreService {
     this.QUERY_PARAMS.next(val);
   }
 
-  getData(): any[] {
+  getData(): any {
     return this.DATA.getValue();
   }
 
-  private setData(val: any[]) {
+  private setData(val: any) {
     this.DATA.next(val);
   }
 
@@ -71,7 +71,7 @@ export class NewsApiStoreService {
         const newData = {
           ...data,
           articles: articles.map(article => ({
-            id: this.getUniqId(),
+            _id: this.getUniqId(),
             ...article
           })),
           totalResults
@@ -80,15 +80,102 @@ export class NewsApiStoreService {
       });
   }
 
-  updateSearchParams({ inputQueryText, onlyMy, selectedSource }) {
-    const data = this.getQueryParams();
+  loadMoreArticles() {
+    this.http
+      .get<any>(
+        QueryStringGeneratorService.getQueryStringArticles(
+          this.getQueryParams()
+        )
+      )
+      .subscribe(({ articles, totalResults }) => {
+        const data = this.getData();
+        const newData = {
+          ...data,
+          articles: [
+            ...data.articles,
+            ...articles.map(article => ({
+              _id: this.getUniqId(),
+              ...article
+            }))
+          ],
+          totalResults
+        };
+        this.setData(newData);
+      });
+  }
+
+  updateSearchParams(params) {
+    const queryParams = this.getQueryParams();
+    const newQueryParams = {
+      ...queryParams,
+      ...params
+    };
+    this.setQueryParams(newQueryParams);
+    console.log("params", params);
+    console.log("newQueryParams", newQueryParams);
+  }
+
+  deleteArticle(articleID) {
+    const queryParams = this.getQueryParams();
+    if (queryParams.onlyMy) {
+      this.http
+        .delete<any>(
+          `${QueryStringGeneratorService.getQueryStringArticles(
+            queryParams
+          )}/${articleID}`
+        )
+        .subscribe();
+    }
+    const data = this.getData();
     const newData = {
       ...data,
-      inputQueryText,
-      onlyMy,
-      selectedSource
+      articles: data.articles.filter(({ _id }) => _id !== articleID)
     };
-    this.setQueryParams(newData);
+    this.setData(newData);
+  }
+
+  updateArticle(article) {
+    const queryParams = this.getQueryParams();
+    if (queryParams.onlyMy) {
+      console.log("!!!!", article);
+      this.http
+        .put<any>(
+          `${QueryStringGeneratorService.getQueryStringArticles(queryParams)}/${
+            article._id
+          }`,
+          article
+        )
+        .subscribe();
+    }
+    const data = this.getData();
+    const newData = {
+      ...data,
+      articles: [
+        ...data.articles.filter(({ _id }) => _id !== article._id),
+        { ...article, source: { name: article.source, id: article.source } }
+      ]
+    };
+    this.setData(newData);
+  }
+
+  addArticle(article) {
+    this.http
+      .post<any>(`${QueryStringGeneratorService.getOnlyMyURL()}`, article)
+      .subscribe();
+
+    const data = this.getData();
+    const newData = {
+      ...data,
+      articles: [
+        ...data.articles,
+        {
+          ...article,
+          _id: this.getUniqId(),
+          source: { name: article.source, id: article.source }
+        }
+      ]
+    };
+    this.setData(newData);
   }
 
   getUniqId() {

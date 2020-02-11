@@ -15,7 +15,7 @@
         class="input-query-onlyMy-checkbox"
       />
     </label>
-    <button type="submit" class="search-button" [disabled]="isDisabledSearch()">
+    <button type="submit" class="search-button" [disabled]="searchForm.invalid">
       Search
     </button>
   </form>

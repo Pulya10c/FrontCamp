@@ -3,11 +3,19 @@
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <label>
       Title
-      <input type="text" formControlName="title" class="input-query-text" />
+      <input
+        type="text"
+        formControlName="title"
+        class="input-query-text ng-valid ng-invalid"
+      />
     </label>
     <label>
       Short description
-      <input type="text" formControlName="description" class="input-query-text" />
+      <input
+        type="text"
+        formControlName="description"
+        class="input-query-text"
+      />
     </label>
     <label>
       Content
@@ -15,11 +23,19 @@
     </label>
     <label>
       Image URL
-      <input type="text" formControlName="urlToImage" class="input-query-text" />
+      <input
+        type="text"
+        formControlName="urlToImage"
+        class="input-query-text"
+      />
     </label>
     <label>
       Date
-      <input type="text" formControlName="date" class="input-query-text" />
+      <input
+        type="text"
+        formControlName="publishedAt"
+        class="input-query-text"
+      />
     </label>
     <label>
       Author
@@ -30,7 +46,7 @@
       <input type="text" formControlName="source" class="input-query-text" />
     </label>
     <!-- disable button -->
-    <button type="submit" class="search-button" [disabled]="isDisabledSearch()">Add</button>
+    <button type="submit" class="search-button" [disabled]="addForm.invalid">Add</button>
     <button routerLink="/news">Cancel</button>
   </form>
 </section>

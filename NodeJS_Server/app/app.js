@@ -32,6 +32,7 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(expressSession({ secret: 'NewsApi', resave: true, saveUninitialized: false }));
 
 app.use(passport.initialize());

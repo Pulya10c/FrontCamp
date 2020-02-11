@@ -16,7 +16,9 @@ router.use(({ path, method }, res, next) => {
 
 router.get('/news', (req, res) => {
     newsModel.find((err, news) => {
-        res.send(news);
+        const totalResults = news.length;
+        const articles = news;
+        res.send({ articles, totalResults });
     });
 });
 
@@ -26,29 +28,35 @@ router.get('/news/:id', ({ params: { id } }, res) => {
     });
 });
 
-router.post('/news', 
-// connectEnsureLogin.ensureLoggedIn(), 
-({ body }, res) => {
-    newsModel.create(responseArticleMock, (err, data) => {
-        res.status(200).send('The article was created');
-    });
-});
+router.post(
+    '/news',
+    // connectEnsureLogin.ensureLoggedIn(),
+    ({ body }, res) => {
+        newsModel.create(body, (err, data) => {
+            res.status(200).send('The article was created');
+        });
+    }
+);
 
-router.put('/news/:id', 
-// connectEnsureLogin.ensureLoggedIn(),
- ({ params: { id }, body: { author } }, res) => {
-    newsModel.updateOne({ _id: id }, { author: author || 'tester' }, (err, data) => {
-        res.status(200).send('The article was updated');
-    });
-});
+router.put(
+    '/news/:id',
+    // connectEnsureLogin.ensureLoggedIn(),
+    ({ params: { id }, body }, res) => {
+        newsModel.updateOne({ _id: id }, { ...body }, (err, data) => {
+            res.status(200).send('The article was updated');
+        });
+    }
+);
 
-router.delete('/news/:id',
-//  connectEnsureLogin.ensureLoggedIn(), 
- ({ params: { id } }, res) => {
-    newsModel.deleteOne({ _id: id }, (err, data) => {
-        res.status(200).send('The article was deleted');
-    });
-});
+router.delete(
+    '/news/:id',
+    //  connectEnsureLogin.ensureLoggedIn(),
+    ({ params: { id } }, res) => {
+        newsModel.deleteOne({ _id: id }, (err, data) => {
+            res.status(200).send('The article was deleted');
+        });
+    }
+);
 
 router.get('/', (req, res) => {
     res.render('homeView', {

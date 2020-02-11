@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NewsApiStoreService } from "../../../services/news-api-store/news-api-store.service";
 
 import { map } from "rxjs/operators";
@@ -13,8 +13,18 @@ export class ArticleSectionComponent implements OnInit {
   id;
   constructor(
     private NewsApiStore: NewsApiStoreService,
+    private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  removeArticle() {
+    this.NewsApiStore.deleteArticle(this.id);
+    this.router.navigate(["news"]);
+  }
+
+  redirectToEditPage() {
+    this.router.navigate([`edit/${this.id}`]);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(({ id }) => {
@@ -22,7 +32,8 @@ export class ArticleSectionComponent implements OnInit {
     });
 
     this.NewsApiStore.dataObserv.subscribe(({ articles }) => {
-      this.article = articles.find(({ id }) => id === this.id);
+      this.article = articles.find(({ _id }) => _id === this.id);
+      console.log('this.article', this.article);
     });
   }
 }

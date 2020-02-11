@@ -19,7 +19,7 @@
     </label>
     <label>
       Date
-      <input type="text" formControlName="date" class="input-query-text" />
+      <input type="text" formControlName="publishedAt" class="input-query-text" />
     </label>
     <label>
       Author
@@ -30,7 +30,7 @@
       <input type="text" formControlName="source" class="input-query-text" />
     </label>
     <!-- disable button -->
-    <button type="submit" class="search-button" [disabled]="isDisabledSearch()">Save</button>
+    <button type="submit" class="search-button" [disabled]="isDisabledSearch">Save</button>
     <button routerLink="/news">Cancel</button>
   </form>
 </section>

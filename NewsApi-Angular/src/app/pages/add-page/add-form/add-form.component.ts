@@ -1,28 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup,Validators } from "@angular/forms";
+import { NewsApiStoreService } from "../../../services/news-api-store/news-api-store.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-add-form',
-  templateUrl: './add-form.component.html',
-  styleUrls: ['./add-form.component.scss']
+  selector: "app-add-form",
+  templateUrl: "./add-form.component.html",
+  styleUrls: ["./add-form.component.scss"]
 })
 export class AddFormComponent implements OnInit {
- addForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    content: new FormControl(''),
-    urlToImage: new FormControl(''),
-    date: new FormControl(''),
-    author: new FormControl(''),
-    source: new FormControl('')
-  });
-  constructor() { }
+  addForm;
 
-  isDisabledSearch() {
-    console.log('1', 1)
+  constructor(
+    private NewsApiStore: NewsApiStoreService,
+    private router: Router
+  ) {}
+
+  onSubmit() {
+    this.NewsApiStore.addArticle(this.addForm.value);
+    this.router.navigate(["news"]);
   }
 
   ngOnInit() {
+    this.addForm = new FormGroup({
+      title: new FormControl("", [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      description: new FormControl(""),
+      content: new FormControl("", [Validators.required]),
+      urlToImage: new FormControl(""),
+      publishedAt: new FormControl(""),
+      author: new FormControl(""),
+      source: new FormControl("")
+    });
   }
-
 }

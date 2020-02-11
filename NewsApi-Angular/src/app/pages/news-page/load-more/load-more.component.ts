@@ -1,23 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsApiStoreService } from '../../../services/news-api-store/news-api-store.service';
+import { Component, OnInit } from "@angular/core";
+import { NewsApiStoreService } from "../../../services/news-api-store/news-api-store.service";
 
 @Component({
-  selector: 'app-load-more',
-  templateUrl: './load-more.component.html',
-  styleUrls: ['./load-more.component.scss']
+  selector: "app-load-more",
+  templateUrl: "./load-more.component.html",
+  styleUrls: ["./load-more.component.scss"]
 })
 export class LoadMoreComponent implements OnInit {
   public totalResults: number;
   public page: number;
   public articlesPerPage: number;
+  public isAvailable: boolean;
 
-  constructor(private NewsApiStore: NewsApiStoreService) {
-    this.totalResults = 0;
-    this.page = 1;
-    this.articlesPerPage = 10;
-  }
-
-  isAvailable = this.totalResults < this.articlesPerPage * this.page;
+  constructor(private NewsApiStore: NewsApiStoreService) {}
 
   ngOnInit() {
     this.NewsApiStore.queryParamsObserv.subscribe(
@@ -28,10 +23,12 @@ export class LoadMoreComponent implements OnInit {
     );
     this.NewsApiStore.dataObserv.subscribe(({ totalResults }) => {
       this.totalResults = totalResults;
+      this.isAvailable = this.totalResults > this.articlesPerPage * this.page;
     });
   }
 
   loadMoreNews() {
-    this.NewsApiStore.fetchArticles();
+    this.NewsApiStore.updateSearchParams({ page: ++this.page });
+    this.NewsApiStore.loadMoreArticles();
   }
 }
