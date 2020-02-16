@@ -1,0 +1,43 @@
+.form {
+  display: grid;
+  grid-template-areas:
+    "title author"
+    "urlToImage publishedAt"
+    "shortDescription content"
+    "shortDescription content"
+    "source source"
+    "submit cancel";
+  grid-gap: 20px;
+}
+
+.title {
+  grid-area: title;
+}
+.shortDescription {
+  grid-area: shortDescription;
+  min-height: 140px;
+  resize: none;
+}
+.content {
+  grid-area: content;
+  min-height: 140px;
+  resize: none;
+}
+.urlToImage {
+  grid-area: urlToImage;
+}
+.publishedAt {
+  grid-area: publishedAt;
+}
+.author {
+  grid-area: author;
+}
+.source {
+  grid-area: source;
+}
+.submit {
+  grid-area: submit;
+}
+.cancel {
+  grid-area: cancel;
+}

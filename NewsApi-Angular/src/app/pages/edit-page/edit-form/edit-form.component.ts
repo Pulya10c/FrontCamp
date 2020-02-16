@@ -1,16 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { NewsApiStoreService } from "../../../services/news-api-store/news-api-store.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { NewsApiStoreService } from '../../../services/news-api-store/news-api-store.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-edit-form",
-  templateUrl: "./edit-form.component.html",
-  styleUrls: ["./edit-form.component.scss"]
+  selector: 'app-edit-form',
+  templateUrl: './edit-form.component.html',
+  styleUrls: ['./edit-form.component.scss']
 })
 export class EditFormComponent implements OnInit {
-  // article = {};
-  editForm;
+  editForm: FormGroup;
 
   constructor(
     private NewsApiStore: NewsApiStoreService,
@@ -18,16 +17,16 @@ export class EditFormComponent implements OnInit {
   ) {}
 
   onSubmit() {
-    const _id = this.router.url.split("/").pop();
-    this.NewsApiStore.updateArticle({ ...this.editForm.value, _id });
-    this.router.navigate(["news"]);
+    const id = this.router.url.split('/').pop();
+    this.NewsApiStore.updateArticle({ ...this.editForm.value, _id: id });
+    this.router.navigate(['news']);
   }
 
   ngOnInit() {
     this.NewsApiStore.dataObserv
       .subscribe(({ articles }) => {
         const article = articles.find(
-          ({ _id }) => _id === this.router.url.split("/").pop()
+          ({ _id }) => _id === this.router.url.split('/').pop()
         );
 
         const {

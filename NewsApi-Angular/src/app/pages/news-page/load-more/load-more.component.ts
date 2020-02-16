@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { NewsApiStoreService } from "../../../services/news-api-store/news-api-store.service";
+import { Component, OnInit } from '@angular/core';
+import { NewsApiStoreService } from '../../../services/news-api-store/news-api-store.service';
 
 @Component({
-  selector: "app-load-more",
-  templateUrl: "./load-more.component.html",
-  styleUrls: ["./load-more.component.scss"]
+  selector: 'app-load-more',
+  templateUrl: './load-more.component.html',
+  styleUrls: ['./load-more.component.scss']
 })
 export class LoadMoreComponent implements OnInit {
-  public totalResults: number;
-  public page: number;
-  public articlesPerPage: number;
-  public isAvailable: boolean;
+  totalResults: number;
+  page: number;
+  articlesPerPage: number;
+  isAvailable: boolean;
 
   constructor(private NewsApiStore: NewsApiStoreService) {}
 

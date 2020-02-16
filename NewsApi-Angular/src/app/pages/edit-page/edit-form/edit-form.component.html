@@ -1,36 +1,38 @@
 <section>
   <h2>Edit</h2>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-    <label>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+    <label class="title">
       Title
-      <input type="text" formControlName="title" class="input-query-text" />
+      <input formControlName="title" placeholder="Title" />
     </label>
-    <label>
+    <label class="shortDescription">
       Short description
-      <input type="text" formControlName="description" class="input-query-text" />
+      <textarea
+        formControlName="description"
+        placeholder="Short description"
+      ></textarea>
     </label>
-    <label>
+    <label class="content">
       Content
-      <input type="text" formControlName="content" class="input-query-text" />
+      <textarea formControlName="content" placeholder="Content"></textarea>
     </label>
-    <label>
+    <label class="urlToImage">
       Image URL
-      <input type="text" formControlName="urlToImage" class="input-query-text" />
+      <input formControlName="urlToImage" placeholder="Url To Image" />
     </label>
-    <label>
-      Date
-      <input type="text" formControlName="publishedAt" class="input-query-text" />
+    <label class="publishedAt">
+      Published At
+      <input formControlName="publishedAt" placeholder="Published At" />
     </label>
-    <label>
+    <label class="author">
       Author
-      <input type="text" formControlName="author" class="input-query-text" />
+      <input formControlName="author" placeholder="Author" />
     </label>
-    <label>
-      Source URL
-      <input type="text" formControlName="source" class="input-query-text" />
+    <label class="source">
+      Source
+      <input formControlName="source" placeholder="Source" />
     </label>
-    <!-- disable button -->
-    <button type="submit" class="search-button" [disabled]="isDisabledSearch">Save</button>
+    <button type="submit" class="search-button">Save</button>
     <button routerLink="/news">Cancel</button>
   </form>
 </section>

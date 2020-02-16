@@ -12,17 +12,17 @@ class QueryStringGeneratorService {
   private news = 'news';
   private apiKey = environment.apiKey;
 
-  getQueryStringSources() {
+  getQueryStringSources(): string {
     let queryString = `${this.baseURL}${this.sources}`;
     queryString += this.addApiKey(this.apiKey);
     return queryString;
   }
 
-  getOnlyMyURL() {
+  getOnlyMyURL(): string {
     return `${this.onlyMyURL}${this.news}`;
   }
 
-  getQueryStringArticles({ inputQueryText, onlyMy, selectedSource, articlesPerPage, page }) {
+  getQueryStringArticles({ inputQueryText, onlyMy, selectedSource, articlesPerPage, page }): string {
     if (onlyMy) {
       return this.getOnlyMyURL();
     }
@@ -40,31 +40,31 @@ class QueryStringGeneratorService {
     return queryString;
   }
 
-  addArticlesPerPage(articlesPerPage) {
+  addArticlesPerPage(articlesPerPage: number): string {
     return `&pageSize=${articlesPerPage}`;
   }
 
-  addPage(page) {
+  addPage(page: number ): string {
     return `&page=${page}`;
   }
 
-  addSortByPopularity() {
+  addSortByPopularity(): string {
     return '&sortBy=popularity';
   }
 
-  addOnlyMy(onlyMy) {
+  addOnlyMy(onlyMy: boolean ): string {
     return onlyMy ? `&onlyMy=${onlyMy}` : '';
   }
 
-  addSource(sourceId) {
+  addSource(sourceId: string ): string {
     return sourceId ? `&sources=${sourceId}` : '';
   }
 
-  addQueryText(queryText) {
+  addQueryText(queryText: string ): string {
     return queryText ? `q=${encodeURIComponent(queryText.replace(/\s+/g, '+'))}` : '';
   }
 
-  addApiKey(key) {
+  addApiKey(key: string ): string {
     return `&apiKey=${key}`;
   }
 
