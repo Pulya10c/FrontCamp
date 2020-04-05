@@ -1,0 +1,38 @@
+<section>
+  <h2>Edit</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+    <label class="title">
+      Title
+      <input formControlName="title" placeholder="Title" />
+    </label>
+    <label class="shortDescription">
+      Short description
+      <textarea
+        formControlName="description"
+        placeholder="Short description"
+      ></textarea>
+    </label>
+    <label class="content">
+      Content
+      <textarea formControlName="content" placeholder="Content"></textarea>
+    </label>
+    <label class="urlToImage">
+      Image URL
+      <input formControlName="urlToImage" placeholder="Url To Image" />
+    </label>
+    <label class="publishedAt">
+      Published At
+      <input formControlName="publishedAt" placeholder="Published At" />
+    </label>
+    <label class="author">
+      Author
+      <input formControlName="author" placeholder="Author" />
+    </label>
+    <label class="source">
+      Source
+      <input formControlName="source" placeholder="Source" />
+    </label>
+    <button type="submit" class="search-button">Save</button>
+    <button routerLink="/news">Cancel</button>
+  </form>
+</section>

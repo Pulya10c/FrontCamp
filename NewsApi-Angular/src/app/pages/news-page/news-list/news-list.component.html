@@ -1,0 +1,17 @@
+<section>
+  <p [textContent]="source"></p>
+  <ul class="articles-list">
+    <li *ngIf="isEmpty" class="nothing-to-display">
+      Nothing to display according to your query
+    </li>
+    <li *ngFor="let article of articles" class="article">
+      <h3 class="article-title">{{ article.title }}</h3>
+      <a routerLink="{{ article._id }}">
+        <img class="article-image" src="{{ article.urlToImage }}" />
+      </a>
+      <p class="article-content">{{ article.description }}</p>
+      <button (click)="removeArticle(article._id)">delete</button>
+      <button (click)="redirectToEditPage(article._id)">edit</button>
+    </li>
+  </ul>
+</section>

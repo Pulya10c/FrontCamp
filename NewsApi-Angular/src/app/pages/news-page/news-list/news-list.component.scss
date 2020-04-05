@@ -1,0 +1,58 @@
+@mixin sm {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.articles-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  font-size: 20px;
+  padding: 5px;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 24px;
+  }
+
+  @include sm {
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 20px;
+  }
+
+  .article {
+    display: grid;
+    grid-gap: 12px;
+    align-content: start;
+    padding: 4px;
+    font-family: "Open Sans", sans-serif;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid rgba(218, 220, 224, 0.5);
+    box-shadow: 0 20px 20px -20px #004db9;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    & .article-title,
+    & .article-image {
+      cursor: pointer;
+    }
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 2px 2px #00183a;
+    }
+
+    .article-link {
+      display: grid;
+    }
+
+    .nothing-to-display {
+      grid-column: auto / span 4;
+    }
+  }
+}
