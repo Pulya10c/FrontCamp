@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Grid should render correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  font-size: 20px;
+  padding: 5px;
+
+  ",
+          "
+  @media (max-width: ",
+          "768",
+          "px) {
+    ",
+          "
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 24px;
+  ",
+          ";
+  }
+",
+          ";
+
+  ",
+          "
+  @media (max-width: ",
+          "576",
+          "px) {
+    ",
+          "
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 20px;
+  ",
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "styled.section",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "section",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

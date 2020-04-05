@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component MainTitleAndSearchIcon should render correctly 1`] = `
+<styled.div>
+  <styled.h1>
+    Video app
+  </styled.h1>
+  <SearchIcon />
+</styled.div>
+`;

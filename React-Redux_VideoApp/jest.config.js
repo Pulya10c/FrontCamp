@@ -5,6 +5,7 @@ const srcDirPath = path.resolve(__dirname, './src/');
 const configDirPath = path.resolve(__dirname, './configs/');
 
 const moduleDirNames = [
+  'mocks',
   'hocs',
   'pages',
   'containers',
@@ -34,5 +35,18 @@ module.exports = {
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
   moduleNameMapper: createModuleNameMapperObject(moduleDirNames),
-  snapshotSerializers: ['enzyme-to-json/serializer']
+  snapshotSerializers: ['enzyme-to-json/serializer'],
+  reporters: [
+    'default',
+    'jest-junit',
+    [
+      '@reportportal/reportportal-agent-jest',
+      {
+        endpoint: 'https://rp.epam.com/api/v1',
+        project: 'dzmitry_astraukh_personal',
+        launch: 'react_redux_video_app',
+        tags: ['tag1', 'tag2']
+      }
+    ]
+  ]
 };

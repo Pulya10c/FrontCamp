@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component VideoListGrid should render correctly 1`] = `
+<styled.section>
+  <Card
+    description="mockGenre"
+    key="mockId"
+    posterPath="mockPoster_path"
+    title="mockTitle"
+    to="/film/mockId"
+    year="mockRelease_date"
+  />
+</styled.section>
+`;

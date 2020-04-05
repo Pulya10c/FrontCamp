@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component CurrentVideoCard should render correctly 1`] = `
+<styled.div>
+  <div>
+    <img
+      src="mockFilmPosterPath"
+    />
+  </div>
+  <div>
+    <h2>
+      mockFilmTitle
+       
+    </h2>
+    <p>
+      Rating: 
+      5
+       Release date: 
+      mockDate
+    </p>
+    <p>
+      mockOverview
+    </p>
+  </div>
+</styled.div>
+`;

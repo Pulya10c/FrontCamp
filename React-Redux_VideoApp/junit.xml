@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="99" failures="0" time="72.189">
+  <testsuite name="Test videoListReducer" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:01" time="7.922" tests="8">
+    <testcase classname="Test videoListReducer case SAVE_MOVIES" name="Test videoListReducer case SAVE_MOVIES" time="0.021">
+    </testcase>
+    <testcase classname="Test videoListReducer case SET_SEARCH_BY_VALUE" name="Test videoListReducer case SET_SEARCH_BY_VALUE" time="0.003">
+    </testcase>
+    <testcase classname="Test videoListReducer case SET_SEARCH_VALUE" name="Test videoListReducer case SET_SEARCH_VALUE" time="0.002">
+    </testcase>
+    <testcase classname="Test videoListReducer case SET_SORT_ORDER_VALUE" name="Test videoListReducer case SET_SORT_ORDER_VALUE" time="0.003">
+    </testcase>
+    <testcase classname="Test videoListReducer case SET_SORT_BY_VALUE" name="Test videoListReducer case SET_SORT_BY_VALUE" time="0.003">
+    </testcase>
+    <testcase classname="Test videoListReducer case SET_OFFSET_VALUE" name="Test videoListReducer case SET_OFFSET_VALUE" time="0.005">
+    </testcase>
+    <testcase classname="Test videoListReducer case SET_LIMIT_VALUE" name="Test videoListReducer case SET_LIMIT_VALUE" time="0.002">
+    </testcase>
+    <testcase classname="Test videoListReducer default case should return initial state " name="Test videoListReducer default case should return initial state " time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:01" time="8.227" tests="16">
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms should return function with 2 functions as arguments" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms should return function with 2 functions as arguments" time="0.029">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 6 times" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 6 times" time="0.037">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called first time with correct args" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called first time with correct args" time="0.004">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called second time with correct args" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called second time with correct args" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 3 time with correct args" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 3 time with correct args" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms getState function should be called once" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms getState function should be called once" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 4 time with correct args" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 4 time with correct args" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 5 time with correct args" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 5 time with correct args" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 6 time with correct args" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called 6 time with correct args" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called second time with correct args in case error" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms dispatch function should be called second time with correct args in case error" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms console error should be called once in case error" name="currentVideoActions -&gt; fetchCurrentVideoAndSimilarFilms console error should be called once in case error" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; resetSearchAngRedirect should return function with 1 function as arguments" name="currentVideoActions -&gt; resetSearchAngRedirect should return function with 1 function as arguments" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; resetSearchAngRedirect dispatch function should be called 2 times" name="currentVideoActions -&gt; resetSearchAngRedirect dispatch function should be called 2 times" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; resetSearchAngRedirect dispatch function should be called 1 time with correct args" name="currentVideoActions -&gt; resetSearchAngRedirect dispatch function should be called 1 time with correct args" time="0.001">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; resetSearchAngRedirect dispatch function should be called 2 time with correct args" name="currentVideoActions -&gt; resetSearchAngRedirect dispatch function should be called 2 time with correct args" time="0.001">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; resetSearchAngRedirect goTo function should be called once and with correct args" name="currentVideoActions -&gt; resetSearchAngRedirect goTo function should be called once and with correct args" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="videoListActions -&gt; sortByValueAndFetchMovies" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:01" time="8.185" tests="15">
+    <testcase classname="videoListActions -&gt; sortByValueAndFetchMovies should return function with 1 function as arguments" name="videoListActions -&gt; sortByValueAndFetchMovies should return function with 1 function as arguments" time="0.024">
+    </testcase>
+    <testcase classname="videoListActions -&gt; sortByValueAndFetchMovies dispatch function should be called 2 times" name="videoListActions -&gt; sortByValueAndFetchMovies dispatch function should be called 2 times" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; createSearchAndRedirect should return function with 2 functions as arguments" name="currentVideoActions -&gt; createSearchAndRedirect should return function with 2 functions as arguments" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; createSearchAndRedirect dispatch function should be called 0 times" name="currentVideoActions -&gt; createSearchAndRedirect dispatch function should be called 0 times" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; createSearchAndRedirect dispatch function should be called 0 times" name="currentVideoActions -&gt; createSearchAndRedirect dispatch function should be called 0 times" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; createSearchAndRedirect goTo function should be called once and with correct args" name="currentVideoActions -&gt; createSearchAndRedirect goTo function should be called once and with correct args" time="0.006">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams should return function with 2 functions as arguments" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams should return function with 2 functions as arguments" time="0.004">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 4 times in case the same filter config and search string" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 4 times in case the same filter config and search string" time="0.013">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams getState function should be called once" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams getState function should be called once" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called third time with correct args in case error" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called third time with correct args in case error" time="0.004">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams console error should be called once in case error" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams console error should be called once in case error" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 0 times in _updateFilterConfigInOrderToSearchParams in case the same filter config and search string" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 0 times in _updateFilterConfigInOrderToSearchParams in case the same filter config and search string" time="0.007">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 2 times in _updateFilterConfigInOrderToSearchParams in case NOT the same filter config and search string (different search value)" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 2 times in _updateFilterConfigInOrderToSearchParams in case NOT the same filter config and search string (different search value)" time="0.002">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 4 times in _updateFilterConfigInOrderToSearchParams in case NOT the same filter config and search string (different searchBy and limit values)" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 4 times in _updateFilterConfigInOrderToSearchParams in case NOT the same filter config and search string (different searchBy and limit values)" time="0.003">
+    </testcase>
+    <testcase classname="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 4 times in _updateFilterConfigInOrderToSearchParams in case NOT the same filter config and search string (different sortOrder and offset values)" name="currentVideoActions -&gt; fetchMovies and _updateFilterConfigInOrderToSearchParams dispatch function should be called 4 times in _updateFilterConfigInOrderToSearchParams in case NOT the same filter config and search string (different sortOrder and offset values)" time="0.02">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SearchByToggler" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:12" time="1.705" tests="3">
+    <testcase classname="Component SearchByToggler should render correctly" name="Component SearchByToggler should render correctly" time="0.036">
+    </testcase>
+    <testcase classname="Component SearchByToggler should pass correct props to component from mapStateToProps" name="Component SearchByToggler should pass correct props to component from mapStateToProps" time="0.003">
+    </testcase>
+    <testcase classname="Component SearchByToggler should pass correct props to component from mapDispatchToProps" name="Component SearchByToggler should pass correct props to component from mapDispatchToProps" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component MainTitleAndSearchIcon" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:12" time="2.055" tests="3">
+    <testcase classname="Component MainTitleAndSearchIcon should render correctly" name="Component MainTitleAndSearchIcon should render correctly" time="0.067">
+    </testcase>
+    <testcase classname="Component MainTitleAndSearchIcon should pass correct props to component from mapStateToProps" name="Component MainTitleAndSearchIcon should pass correct props to component from mapStateToProps" time="0.002">
+    </testcase>
+    <testcase classname="Component MainTitleAndSearchIcon should pass correct props to component from mapDispatchToProps" name="Component MainTitleAndSearchIcon should pass correct props to component from mapDispatchToProps" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component InputTextContainer" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:12" time="1.918" tests="3">
+    <testcase classname="Component InputTextContainer should render correctly" name="Component InputTextContainer should render correctly" time="0.078">
+    </testcase>
+    <testcase classname="Component InputTextContainer should pass correct props to component from mapStateToProps" name="Component InputTextContainer should pass correct props to component from mapStateToProps" time="0.008">
+    </testcase>
+    <testcase classname="Component InputTextContainer should pass correct props to component from mapDispatchToProps" name="Component InputTextContainer should pass correct props to component from mapDispatchToProps" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component ButtonComponent" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:17" time="1.457" tests="4">
+    <testcase classname="Component ButtonComponent should render correctly" name="Component ButtonComponent should render correctly" time="0.01">
+    </testcase>
+    <testcase classname="Component ButtonComponent should call defaultProps.executeAction if call onClick" name="Component ButtonComponent should call defaultProps.executeAction if call onClick" time="0.094">
+    </testcase>
+    <testcase classname="Component ButtonComponent should call defaultProps.executeAction if call onKeyUp and key === ENTER" name="Component ButtonComponent should call defaultProps.executeAction if call onKeyUp and key === ENTER" time="0.043">
+    </testcase>
+    <testcase classname="Component ButtonComponent should not call defaultProps.executeAction if call onKeyUp and key !== ENTER" name="Component ButtonComponent should not call defaultProps.executeAction if call onKeyUp and key !== ENTER" time="0.04">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component Card" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:17" time="1.682" tests="1">
+    <testcase classname="Component Card should render correctly" name="Component Card should render correctly" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SortByToggler" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:17" time="1.812" tests="3">
+    <testcase classname="Component SortByToggler should render correctly" name="Component SortByToggler should render correctly" time="0.012">
+    </testcase>
+    <testcase classname="Component SortByToggler should pass correct props to component from mapStateToProps" name="Component SortByToggler should pass correct props to component from mapStateToProps" time="0.003">
+    </testcase>
+    <testcase classname="Component SortByToggler should pass correct props to component from mapDispatchToProps" name="Component SortByToggler should pass correct props to component from mapDispatchToProps" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SearchButton" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:20" time="1.247" tests="2">
+    <testcase classname="Component SearchButton should render correctly" name="Component SearchButton should render correctly" time="0.004">
+    </testcase>
+    <testcase classname="Component SearchButton should pass correct props to component from mapDispatchToProps" name="Component SearchButton should pass correct props to component from mapDispatchToProps" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component VideoListGrid" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:20" time="1.596" tests="2">
+    <testcase classname="Component VideoListGrid should render correctly" name="Component VideoListGrid should render correctly" time="0.011">
+    </testcase>
+    <testcase classname="Component VideoListGrid should pass correct props to component from mapStateToProps" name="Component VideoListGrid should pass correct props to component from mapStateToProps" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test currentVideoReducer" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:20" time="2.394" tests="2">
+    <testcase classname="Test currentVideoReducer case SAVE_FILM" name="Test currentVideoReducer case SAVE_FILM" time="0.006">
+    </testcase>
+    <testcase classname="Test currentVideoReducer default case should return initial state " name="Test currentVideoReducer default case should return initial state " time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component ErrorBoundary" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:24" time="1.294" tests="3">
+    <testcase classname="Component ErrorBoundary should render Child correctly" name="Component ErrorBoundary should render Child correctly" time="0.01">
+    </testcase>
+    <testcase classname="Component ErrorBoundary should render ErrorWrapper correctly" name="Component ErrorBoundary should render ErrorWrapper correctly" time="0.01">
+    </testcase>
+    <testcase classname="Component ErrorBoundary should call window.location.reload if to call handleClickReloadPage" name="Component ErrorBoundary should call window.location.reload if to call handleClickReloadPage" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component InputText" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:24" time="1.46" tests="4">
+    <testcase classname="Component InputText should render correctly" name="Component InputText should render correctly" time="0.008">
+    </testcase>
+    <testcase classname="Component InputText should call defaultProps.setInputValue with correct args if call onChange" name="Component InputText should call defaultProps.setInputValue with correct args if call onChange" time="0.07">
+    </testcase>
+    <testcase classname="Component InputText should call defaultProps.executeActionByEnter if call onKeyUp and key === ENTER" name="Component InputText should call defaultProps.executeActionByEnter if call onKeyUp and key === ENTER" time="0.034">
+    </testcase>
+    <testcase classname="Component InputText should not call defaultProps.executeActionByEnter if call onKeyUp and key !== ENTER" name="Component InputText should not call defaultProps.executeActionByEnter if call onKeyUp and key !== ENTER" time="0.051">
+    </testcase>
+  </testsuite>
+  <testsuite name="routerActions -&gt; goTo" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:24" time="1.807" tests="2">
+    <testcase classname="routerActions -&gt; goTo should call history push method once and with correct args case 1" name="routerActions -&gt; goTo should call history push method once and with correct args case 1" time="0.004">
+    </testcase>
+    <testcase classname="routerActions -&gt; goTo should call history push method once and with correct args case 2" name="routerActions -&gt; goTo should call history push method once and with correct args case 2" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SearchIcon" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:28" time="1.151" tests="2">
+    <testcase classname="Component SearchIcon should render correctly" name="Component SearchIcon should render correctly" time="0.009">
+    </testcase>
+    <testcase classname="Component SearchIcon should call defaultProps.executeAction if call onClick" name="Component SearchIcon should call defaultProps.executeAction if call onClick" time="0.095">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SearchResultsGenresInfo" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:28" time="1.401" tests="2">
+    <testcase classname="Component SearchResultsGenresInfo should render correctly" name="Component SearchResultsGenresInfo should render correctly" time="0.004">
+    </testcase>
+    <testcase classname="Component SearchResultsGenresInfo should pass correct props to component from mapStateToProps" name="Component SearchResultsGenresInfo should pass correct props to component from mapStateToProps" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SearchResultsTotalInfo" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:28" time="1.457" tests="2">
+    <testcase classname="Component SearchResultsTotalInfo should render correctly" name="Component SearchResultsTotalInfo should render correctly" time="0.006">
+    </testcase>
+    <testcase classname="Component SearchResultsTotalInfo should pass correct props to component from mapStateToProps" name="Component SearchResultsTotalInfo should pass correct props to component from mapStateToProps" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component Toggler" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:31" time="1.307" tests="2">
+    <testcase classname="Component Toggler should render correctly" name="Component Toggler should render correctly" time="0.014">
+    </testcase>
+    <testcase classname="Component Toggler should call defaultProps.setToggleValue with correct args if call TogglerRadioOption onChange" name="Component Toggler should call defaultProps.setToggleValue with correct args if call TogglerRadioOption onChange" time="0.028">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SubSection" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:31" time="1.195" tests="1">
+    <testcase classname="Component SubSection should render correctly" name="Component SubSection should render correctly" time="0.014">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component with withErrorAndFetchingRoutePage" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:31" time="1.593" tests="1">
+    <testcase classname="Component with withErrorAndFetchingRoutePage should render correctly" name="Component with withErrorAndFetchingRoutePage should render correctly" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component NoMatch" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:34" time="1.004" tests="1">
+    <testcase classname="Component NoMatch should render correct message" name="Component NoMatch should render correct message" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component Grid" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:34" time="1.077" tests="1">
+    <testcase classname="Component Grid should render correctly" name="Component Grid should render correctly" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component CurrentVideoCard" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:34" time="1.546" tests="2">
+    <testcase classname="Component CurrentVideoCard should render correctly" name="Component CurrentVideoCard should render correctly" time="0.011">
+    </testcase>
+    <testcase classname="Component CurrentVideoCard should pass correct props to component from mapStateToProps" name="Component CurrentVideoCard should pass correct props to component from mapStateToProps" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component Spinner" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:36" time="1.082" tests="1">
+    <testcase classname="Component Spinner should render correctly" name="Component Spinner should render correctly" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component MainWrapper" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:37" time="1.207" tests="1">
+    <testcase classname="Component MainWrapper should render correctly" name="Component MainWrapper should render correctly" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test uiStateReducer" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:37" time="1.312" tests="4">
+    <testcase classname="Test uiStateReducer case START_FETCHING" name="Test uiStateReducer case START_FETCHING" time="0.007">
+    </testcase>
+    <testcase classname="Test uiStateReducer case FINISH_FETCHING" name="Test uiStateReducer case FINISH_FETCHING" time="0.002">
+    </testcase>
+    <testcase classname="Test uiStateReducer case SET_ERROR" name="Test uiStateReducer case SET_ERROR" time="0.002">
+    </testcase>
+    <testcase classname="Test uiStateReducer default case should return initial state " name="Test uiStateReducer default case should return initial state " time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component Header" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:39" time="1.239" tests="1">
+    <testcase classname="Component Header should render correctly" name="Component Header should render correctly" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SubTitle" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:39" time="1.306" tests="1">
+    <testcase classname="Component SubTitle should render correctly" name="Component SubTitle should render correctly" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component SplitWrapper" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:40" time="1.424" tests="1">
+    <testcase classname="Component SplitWrapper should render correctly" name="Component SplitWrapper should render correctly" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component InfoSubTitle" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:43" time="1.093" tests="1">
+    <testcase classname="Component InfoSubTitle should render correctly" name="Component InfoSubTitle should render correctly" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="Component MainTitle" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:43" time="1.1" tests="1">
+    <testcase classname="Component MainTitle should render correctly" name="Component MainTitle should render correctly" time="0.014">
+    </testcase>
+  </testsuite>
+  <testsuite name="uiStateActions -&gt; startFetching" errors="0" failures="0" skipped="0" timestamp="2020-02-09T19:06:43" time="1.023" tests="3">
+    <testcase classname="uiStateActions -&gt; startFetching should return correct object" name="uiStateActions -&gt; startFetching should return correct object" time="0.004">
+    </testcase>
+    <testcase classname="uiStateActions -&gt; finishFetching should return correct object" name="uiStateActions -&gt; finishFetching should return correct object" time="0.003">
+    </testcase>
+    <testcase classname="uiStateActions -&gt; setError should return correct object" name="uiStateActions -&gt; setError should return correct object" time="0.003">
+    </testcase>
+  </testsuite>
+</testsuites>

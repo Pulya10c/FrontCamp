@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component SearchIcon should render correctly 1`] = `
+<styled.img
+  alt="Search"
+  onClick={[Function]}
+  src="search_icon.png"
+/>
+`;

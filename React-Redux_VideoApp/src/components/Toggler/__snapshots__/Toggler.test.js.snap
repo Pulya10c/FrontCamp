@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Toggler should render correctly 1`] = `
+<styled.div>
+  <styled.h2>
+    mockTitle
+  </styled.h2>
+  <styled.input
+    checked={false}
+    id="code10"
+    name="code1"
+    onChange={[Function]}
+    type="radio"
+    value="code1"
+  />
+  <styled.label
+    htmlFor="code10"
+  >
+    text1
+  </styled.label>
+  <styled.input
+    checked={false}
+    id="code21"
+    name="code2"
+    onChange={[Function]}
+    type="radio"
+    value="code2"
+  />
+  <styled.label
+    htmlFor="code21"
+  >
+    text2
+  </styled.label>
+</styled.div>
+`;
